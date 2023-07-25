@@ -1,0 +1,8 @@
+.card img{
+  height: 200px;
+  width: fit-content;
+}
+.card{
+  height: 350px;
+  border-radius: 0%;
+}

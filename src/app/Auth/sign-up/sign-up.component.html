@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <form [formGroup]="signUpForm" (ngSubmit)="signUP()" class="">
+    <div class="card w-50 mx-auto p-5 bg-info-subtle my-5">
+      <h1 class="text-center fw-light mb-3">Registration</h1>
+      <div class="my-2 justify-content-between d-flex">
+        <label class="my-auto" for="fname">First Name:</label>
+        <input type="text" name="fname" id="fname" formControlName="fname">
+      </div>
+      <div class="my-2 justify-content-between d-flex">
+        <label class="my-auto" for="lname">Last Name:</label>
+        <input type="text" name="lname" id="lname" formControlName="lname">
+      </div>
+      <div class="my-2 justify-content-between d-flex">
+        <label class="my-auto" for="mail">Email:</label>
+        <input type="text" name="mail" id="mail" formControlName="mail">
+      </div>
+      <div class="my-2 justify-content-between d-flex">
+        <label class="my-auto" for="pwd">Password:</label>
+        <input type="password" name="pwd" id="pwd" formControlName="pwd">
+      </div>
+      <input type="file" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
+    <input type="submit" value="Submit" [disabled]="!signUpForm.valid" class="btn btn-primary btn-lg w-25 mx-auto mt-2">
+  </div>
+</form>
+</div>
+

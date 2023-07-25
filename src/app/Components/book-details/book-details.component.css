@@ -1,0 +1,43 @@
+.para-btn{
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.description p{
+  text-align: justify;
+}
+.tag{
+  background-color: grey;
+  padding: 5px;
+  color: white;
+}
+
+.star{
+  overflow: hidden;
+  width: 100px;
+}
+.details-card p{
+  width: 160px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid rgb(0, 119, 255);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: skyblue;
+}
+.single-review{
+  border-radius: 50px;
+  border-top-left-radius: 0px;
+}
+.review-head{
+  width: fit-content;
+  border-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.rev-body{
+  border-radius: 8px;
+  border-top-left-radius: 0px;
+}

@@ -1,0 +1,16 @@
+<p>comics works!</p>
+<div class="container mx-auto my-3">
+  <div class="row">
+    <ng-container *ngFor="let comics of heroData">
+      <div class="col-3 p-0">
+        <div class="card p-3" routerLink="comic-details/{{comics.id}}">
+          <img class="mx-auto my-3 rounded-2" src="{{comics.thumbnail.path}}.{{comics.thumbnail.extension}}" alt="">
+          <h5>{{comics.title}}</h5>
+          <div class="w-100">
+            <p class="float-end fw-bold text-success fs-4">{{ comics.prices[0].price | dollarToInr | currency:'INR' }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

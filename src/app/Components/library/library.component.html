@@ -1,0 +1,89 @@
+<div class="container-fluid bg-dark">
+  <h1 class="container text-light py-3" >My Library</h1>
+</div>
+<div class="container mx-auto my-5">
+  <div class="d-flex">
+    <div class="profile">
+      <div class="profile-img">
+        <img [src]="userData?.img" width="200px" alt="">
+      </div>
+      <h3 class="my-2">{{userData?.fname}} {{userData?.lname}}</h3>
+      <h4 class="my-2">{{userData?.mail}}</h4>
+    </div>
+    <div class="library  mx-5">
+      <div class="container d-flex">
+        <div class="row">
+          <ng-container *ngFor="let book of userData?.library">
+            <div class="col-12 card flex-row my-2 p-5">
+              <img class="w-25" src="https://covers.openlibrary.org/b/id/{{book.cover_id}}-M.jpg" alt="">
+              <div class="mx-5 d-flex flex-column justify-content-evenly">
+                <h3>{{book?.title | slice:0:30}}</h3>
+                <p>{{book.authors}}</p>
+                <button (click)="remove(book.title, 'book')" class="btn btn-danger">Remove from library</button>
+                <button *ngIf="!reviewOrNot(book.title)" data-bs-toggle="modal" data-bs-target="#reviewModal" (click)="reviewFor(book.title, 'book')" class="btn btn-success">Give a Review</button>
+                <button *ngIf="reviewOrNot(book.title)" data-bs-toggle="modal" data-bs-target="#editReviewModal" (click)="reviewFor(book.title, 'book')" class="btn btn-dark">Edit Review</button>
+                <button *ngIf="reviewOrNot(book.title)" (click)="deleteReview(book.title, 'book')" class="btn btn-danger">Delete Review</button>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngFor="let comic of userData?.comics">
+            <div class="col-12 card flex-row my-2 p-5">
+              <img class="w-25" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" alt="">
+              <div class="mx-5 d-flex flex-column justify-content-evenly">
+                <h3>{{comic?.title | slice:0:30}}</h3>
+                <p>Marvel Comics</p>
+                <button (click)="remove(comic.title, 'comic')" class="btn btn-danger">Remove from library</button>
+                <button *ngIf="!reviewOrNot(comic.title)" data-bs-toggle="modal" data-bs-target="#reviewModal" (click)="reviewFor(comic.title, 'comic')" class="btn btn-success">Give a Review</button>
+                <button *ngIf="reviewOrNot(comic.title)" data-bs-toggle="modal" data-bs-target="#editReviewModal" (click)="reviewFor(comic.title, 'comic')" class="btn btn-dark">Edit Review</button>
+                <button *ngIf="reviewOrNot(comic.title)" (click)="deleteReview(comic.title, 'comic')" class="btn btn-danger">Delete Review</button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--add review Modal -->
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="reviewModalLabel">Write a review</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Title: {{reviewForTitle| titlecase | slice:0:30 }}</p>
+        <textarea class="w-100 rounded-2" [(ngModel)]="reviewData"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="saveReview()" type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- edit review -->
+<div class="modal fade" id="editReviewModal" tabindex="-1" aria-labelledby="editReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editReviewModalLabel">Edit your review</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Title: {{reviewForTitle| titlecase | slice:0:30 }}</p>
+        <textarea class="w-100 rounded-2" [(ngModel)]="reviewData"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="updateReview()" type="submit" class="btn btn-primary">Update review</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

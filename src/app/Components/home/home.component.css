@@ -1,0 +1,12 @@
+
+.owl-carousel .owl-item img {
+  display: flex;
+  /* width: auto; */
+  height: 300px!important;
+}
+img.rounded-3.ng-star-inserted {
+  width: auto;
+  height: 275px;
+  display: flex;
+  margin: 0px auto;
+}
