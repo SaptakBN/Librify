@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { LibraryjsonService } from 'src/app/Services/libraryjson.service';
 import { NyTimesService } from 'src/app/Services/ny-times.service';
 import { StoreBookDataService } from 'src/app/Services/store-book-data.service';
 
@@ -11,19 +12,34 @@ import { StoreBookDataService } from 'src/app/Services/store-book-data.service';
 export class HomeComponent implements OnInit {
   bestseller_fiction!: any;
   bestseller_non_fiction!: any;
+  allBooks!:any;
+  search:string = '';
+  filterBySearch!:any
   constructor(
     private nyTimeSer: NyTimesService,
-    private nyStorage: StoreBookDataService
+    private nyStorage: StoreBookDataService,
+    private openLibrary: LibraryjsonService
   ) {}
   ngOnInit(): void {
-    this.nyStorage.getBookData('fiction').subscribe((res)=>{
+    this.openLibrary.carousel_books('nyTimesFiction').subscribe((res)=>{
       this.bestseller_fiction = res;
       // console.log(this.bestseller_fiction);
     })
-    this.nyStorage.getBookData('nonfiction').subscribe((res)=>{
+    this.openLibrary.carousel_books('nyTimesNonfiction').subscribe((res)=>{
       this.bestseller_non_fiction = res;
     })
+    this.openLibrary.getAllBooks().subscribe(res=>{
+      // console.log(res);
+      this.allBooks = res
+    })
   }
+
+  startSearching(){
+    this.filterBySearch = this.allBooks.filter((v:any)=>v.title.toLowerCase().includes(this.search.toLowerCase()))
+    this.filterBySearch = this.filterBySearch.slice(0,5)
+    // console.log(this.filterBySearch);
+  }
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,

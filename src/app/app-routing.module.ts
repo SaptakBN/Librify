@@ -13,10 +13,14 @@ import { authGuard } from './Guards/auth.guard';
 import { MarvelComponent } from './Components/marvel/marvel.component';
 import { ComicsComponent } from './Components/marvel/comics/comics.component';
 import { ComicDetailsComponent } from './Components/marvel/comics/comic-details/comic-details.component';
+import { AdminPanelComponent } from './Components/admin-panel/admin-panel.component';
+import { MakeReqComponent } from './Components/make-req/make-req.component';
+import { PendingReqComponent } from './Components/pending-req/pending-req.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'home',component:HomeComponent},
+  {path:'home/book-details/:category/:title', component:BookDetailsComponent},
   {path:'category',component:CategoryComponent},
   {path:'category/book-list/:category',component:BookListComponent},
   {path:'category/book-details/:category/:title',component:BookDetailsComponent},
@@ -28,6 +32,9 @@ const routes: Routes = [
   {path:'marvel',component:MarvelComponent},
   {path:'marvel/comics/:charID',component:ComicsComponent},
   {path:'marvel/comics/:charID/comic-details/:comicID',component:ComicDetailsComponent},
+  {path:'admin-panel',component:AdminPanelComponent},
+  {path:'make-req',component:MakeReqComponent},
+  {path:'pending-req',component:PendingReqComponent},
   {path:'**',component:PnfComponent}
 ];
 

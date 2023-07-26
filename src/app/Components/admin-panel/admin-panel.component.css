@@ -1,0 +1,8 @@
+th, td {
+  /* border-radius: 10px; */
+  border: 2px solid white;
+}
+tr, th{
+  border: 2px solid white;
+    border-radius: 5px;
+}

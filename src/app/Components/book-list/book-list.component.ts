@@ -63,7 +63,7 @@ export class BookListComponent implements OnInit {
             });
           }
         })
-        console.log(this.page_books);
+        // console.log(this.page_books);
 
         break;
       case 2:
@@ -78,7 +78,7 @@ export class BookListComponent implements OnInit {
             });
           }
         })
-        console.log(this.page_books);
+        // console.log(this.page_books);
 
         break;
       case 3:
@@ -93,7 +93,7 @@ export class BookListComponent implements OnInit {
             });
           }
         })
-        console.log(this.page_books);
+        // console.log(this.page_books);
 
         break;
       case 4:
@@ -108,7 +108,7 @@ export class BookListComponent implements OnInit {
             });
           }
         })
-        console.log(this.page_books);
+        // console.log(this.page_books);
 
         break;
       case 5:
@@ -123,7 +123,7 @@ export class BookListComponent implements OnInit {
             });
           }
         })
-        console.log(this.page_books);
+        // console.log(this.page_books);
 
         break;
 
@@ -131,4 +131,13 @@ export class BookListComponent implements OnInit {
         break;
     }
   }
+  // addGenre(){
+  //   let modified_books:any = []
+  //   this.all_books.map((v:any)=>{
+  //     let data = v
+  //     data.genre = this.genre
+  //     modified_books.push(data)
+  //   })
+  //   console.log(modified_books);
+  // }
 }

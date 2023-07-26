@@ -7,7 +7,7 @@
     <owl-carousel-o [options]="category">
       <ng-container *ngFor="let slide of list.items">
         <ng-template carouselSlide [id]="slide.rank" style="width: 300px; height: 100%;">
-          <img src="https://covers.openlibrary.org/b/id/{{slide.cover_id}}-M.jpg" routerLink="book-details/{{list.genre}}/{{slide.title}}" class="rounded-3">
+          <img src="https://covers.openlibrary.org/b/id/{{slide.cover_id}}-M.jpg" routerLink="book-details/{{list.genre}}/{{slide.title}}" class="rounded-3 mt-2">
           <p class="text-center fw-bold mt-2 px-5" >{{slide.title | slice:0:20}}</p>
         </ng-template>
       </ng-container>

@@ -53,7 +53,8 @@ export class BookDetailsComponent implements OnInit {
                       fname:v.fname,
                       lname:v.lname,
                       mail:v.mail,
-                      review:r
+                      img:v.img,
+                      review:r,
                     }
                     this.reviews.push(reviewData)
                   }

@@ -26,11 +26,14 @@ export class SignUpComponent implements OnInit{
       mail:this.signUpForm.value.mail,
       pwd:this.signUpForm.value.pwd,
       id:this.signUpForm.value.mail,
+      admin:false,
       img:this.base64textString,
-      library:[]
+      library:[],
+      comics:[],
+      review:[]
     }
     this.authSer.signUP(data).subscribe((res)=>{
-      console.log('response',res);
+      // console.log('response',res);
     })
   }
 

@@ -1,5 +1,5 @@
 <div class="container-fluid bg-dark">
-  <h1 class="container text-light py-3" >My Library</h1>
+  <h1 class="container text-light py-3">My Library</h1>
 </div>
 <div class="container mx-auto my-5">
   <div class="d-flex">
@@ -14,29 +14,15 @@
       <div class="container d-flex">
         <div class="row">
           <ng-container *ngFor="let book of userData?.library">
-            <div class="col-12 card flex-row my-2 p-5">
-              <img class="w-25" src="https://covers.openlibrary.org/b/id/{{book.cover_id}}-M.jpg" alt="">
-              <div class="mx-5 d-flex flex-column justify-content-evenly">
-                <h3>{{book?.title | slice:0:30}}</h3>
-                <p>{{book.authors}}</p>
-                <button (click)="remove(book.title, 'book')" class="btn btn-danger">Remove from library</button>
-                <button *ngIf="!reviewOrNot(book.title)" data-bs-toggle="modal" data-bs-target="#reviewModal" (click)="reviewFor(book.title, 'book')" class="btn btn-success">Give a Review</button>
-                <button *ngIf="reviewOrNot(book.title)" data-bs-toggle="modal" data-bs-target="#editReviewModal" (click)="reviewFor(book.title, 'book')" class="btn btn-dark">Edit Review</button>
-                <button *ngIf="reviewOrNot(book.title)" (click)="deleteReview(book.title, 'book')" class="btn btn-danger">Delete Review</button>
-              </div>
+            <div class="col-3 card my-2 p-5">
+              <img class="w-100" src="https://covers.openlibrary.org/b/id/{{book.cover_id}}-M.jpg" alt=""
+                data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(book?.title, 'book')">
             </div>
           </ng-container>
           <ng-container *ngFor="let comic of userData?.comics">
-            <div class="col-12 card flex-row my-2 p-5">
-              <img class="w-25" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" alt="">
-              <div class="mx-5 d-flex flex-column justify-content-evenly">
-                <h3>{{comic?.title | slice:0:30}}</h3>
-                <p>Marvel Comics</p>
-                <button (click)="remove(comic.title, 'comic')" class="btn btn-danger">Remove from library</button>
-                <button *ngIf="!reviewOrNot(comic.title)" data-bs-toggle="modal" data-bs-target="#reviewModal" (click)="reviewFor(comic.title, 'comic')" class="btn btn-success">Give a Review</button>
-                <button *ngIf="reviewOrNot(comic.title)" data-bs-toggle="modal" data-bs-target="#editReviewModal" (click)="reviewFor(comic.title, 'comic')" class="btn btn-dark">Edit Review</button>
-                <button *ngIf="reviewOrNot(comic.title)" (click)="deleteReview(comic.title, 'comic')" class="btn btn-danger">Delete Review</button>
-              </div>
+            <div class="col-3 card my-2 p-5">
+              <img class="w-100" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" alt=""
+                data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(comic?.title, 'comic')">
             </div>
           </ng-container>
         </div>
@@ -45,6 +31,58 @@
   </div>
 </div>
 
+<!-- card modal -->
+
+
+<div class="modal fade" id="card" tabindex="-1" aria-labelledby="cardLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+      </div> -->
+      <button type="button" class="btn-close ms-auto mt-2 me-2 p-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body d-flex flex-column">
+        <ng-container *ngIf="reviewType=='book'">
+          <div class="d-flex">
+            <img class="w-50 rounded-2 mx-2" src="https://covers.openlibrary.org/b/id/{{reviewBookData[0].cover_id}}-L.jpg"
+            alt="">
+            <div>
+              <h1 class="fs-5" id="cardLabel">Title: {{reviewForTitle}}</h1>
+              <h1 class="fs-5" id="cardLabel">Author: {{reviewBookData[0]?.authors}}</h1>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between my-2">
+            <button (click)="remove(reviewBookData[0].title, 'book')" class="btn btn-danger w-100 btn-sm mx-2">Remove from library</button>
+            <button *ngIf="!reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal" data-bs-target="#reviewModal"
+              (click)="reviewFor(reviewBookData[0].title, 'book')" class="btn btn-success w-100 btn-sm mx-2">Give a Review</button>
+            <button *ngIf="reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal" data-bs-target="#editReviewModal"
+              (click)="reviewFor(reviewBookData[0].title, 'book')" class="btn btn-dark w-100 btn-sm mx-2">Edit Review</button>
+            <button *ngIf="reviewOrNot(reviewBookData[0].title)" (click)="deleteReview(reviewBookData[0].title, 'book')"
+              class="btn btn-danger w-100 btn-sm mx-2">Delete Review</button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="reviewType=='comic'">
+          <div class="d-flex">
+            <img class="w-50 rounded-2 mx-2" *ngIf="reviewType=='comic'"
+              src="{{reviewBookData[0].thumbnail.path}}.{{reviewBookData[0].thumbnail.extension}}" alt="">
+            <div>
+              <h1 class="fs-5" id="cardLabel">Title: {{reviewForTitle}}</h1>
+              <h1 class="fs-5" id="cardLabel">Publisher: Marvel</h1>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between my-2">
+            <button (click)="remove(reviewBookData[0].title, 'comic')" class="btn btn-danger w-100 btn-sm mx-2">Remove from library</button>
+            <button *ngIf="!reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal" data-bs-target="#reviewModal"
+              (click)="reviewFor(reviewBookData[0].title, 'comic')" class="btn btn-success w-100 btn-sm mx-2">Give a Review</button>
+            <button *ngIf="reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal" data-bs-target="#editReviewModal"
+              (click)="reviewFor(reviewBookData[0].title, 'comic')" class="btn btn-dark w-100 btn-sm mx-2">Edit Review</button>
+            <button *ngIf="reviewOrNot(reviewBookData[0].title)" (click)="deleteReview(reviewBookData[0].title, 'comic')"
+              class="btn btn-danger w-100 btn-sm mx-2">Delete Review</button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!--add review Modal -->
@@ -85,5 +123,3 @@
     </div>
   </div>
 </div>
-
-

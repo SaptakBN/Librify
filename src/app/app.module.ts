@@ -24,6 +24,9 @@ import { MarvelComponent } from './Components/marvel/marvel.component';
 import { ComicsComponent } from './Components/marvel/comics/comics.component';
 import { DollarToInrPipe } from './Pipes/dollar-to-inr.pipe';
 import { ComicDetailsComponent } from './Components/marvel/comics/comic-details/comic-details.component';
+import { AdminPanelComponent } from './Components/admin-panel/admin-panel.component';
+import { MakeReqComponent } from './Components/make-req/make-req.component';
+import { PendingReqComponent } from './Components/pending-req/pending-req.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { ComicDetailsComponent } from './Components/marvel/comics/comic-details/
     ComicsComponent,
     DollarToInrPipe,
     ComicDetailsComponent,
+    AdminPanelComponent,
+    MakeReqComponent,
+    PendingReqComponent,
   ],
   imports: [
     BrowserModule,

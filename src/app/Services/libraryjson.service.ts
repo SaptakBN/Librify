@@ -11,4 +11,8 @@ export class LibraryjsonService {
   carousel_books(genre:any):Observable<any>{
     return this.http.get<any>(`${this.open_library_api}/${genre}`)
   }
+  getAllBooks():Observable<any>{
+    return this.http.get<any>(`${this.open_library_api}/allBooks`)
+  }
+
 }

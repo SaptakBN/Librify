@@ -16,7 +16,8 @@ export class ComicDetailsComponent implements OnInit {
   comicID!:string | null
   comicData!:any;
   modal_img!:any;
-  userData!:any
+  userData!:any;
+  reviews:any[]=[];
   constructor(private aroute: ActivatedRoute, private marvelSer:MarvelService, private storageSer:StorageService, private authSer:AuthService){}
   ngOnInit(): void {
     this.aroute.paramMap.subscribe(param=>{
@@ -30,9 +31,30 @@ export class ComicDetailsComponent implements OnInit {
         // console.log(res.data.results);
         this.comicData = res.data.results[0]
         // console.log(this.comicData);
-
+        let token = this.storageSer.getToken()
+        if(token)
+        this.authSer.logIN(token).subscribe((singleRes)=>{
+          this.userData = singleRes
+        })
+          this.authSer.getAllUser().subscribe((allRes)=>{
+            allRes.map((v:any)=>{
+              v.review.map((d:any)=>{
+                if(d.title == this.comicData.title){
+                    let reviewData = {
+                      fname:v.fname,
+                      lname:v.lname,
+                      mail:v.mail,
+                      review:d.review,
+                      img:v.img
+                    }
+                    this.reviews.push(reviewData)
+                    // console.log(reviewData);
+                }
+              })
+              // console.log(this.reviews);
+            })
+          })
       })
-
     })
   }
   modalImg(path:string, extension:string){
@@ -90,6 +112,21 @@ export class ComicDetailsComponent implements OnInit {
           }
         })
       })
+    }
+  }
+  inLibrary(){
+    let present = false
+    let token = this.storageSer.getToken()
+    if(token!=null){
+      this.userData?.comics?.map((v:any)=>{
+        if(this.comicData.title == v.title){
+          present = true
+        }
+      })
+      return present
+    }
+    else{
+      return present
     }
   }
 }

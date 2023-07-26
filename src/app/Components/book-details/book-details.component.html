@@ -35,7 +35,12 @@
           <h5 class="d-flex px-4 mb-0 py-3 bg-dark-subtle review-head">Reviews({{reviews.length}})</h5>
           <div class="bg-dark-subtle p-4 rev-body">
             <ng-container *ngFor="let rev of reviews">
-              <p class="d-flex justify-content-between single-review bg-primary text-light p-3 fs-5">{{rev.review.review}} <span class="name fw-light fst-italic fs-6" >by {{rev.fname}} {{rev.lname}}</span></p>
+              <div class="d-flex w-100">
+                <div class="rev-img">
+                  <img class="review-img my-auto" width="50px" src="{{rev?.img}}" alt="">
+                </div>
+                <p class="d-flex justify-content-between single-review bg-primary text-light mx-2 p-3 fs-5">{{rev.review.review}} <span class="name fw-light fst-italic fs-6" >by {{rev.fname}} {{rev.lname}}</span></p>
+              </div>
             </ng-container>
           </div>
         </div>

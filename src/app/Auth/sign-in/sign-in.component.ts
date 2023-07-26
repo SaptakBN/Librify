@@ -22,8 +22,8 @@ export class SignINComponent implements OnInit {
     this.authSer.logIN(this.signINForm.value.mail).subscribe((res:any)=>{
       if(this.signINForm.value.pwd === res.pwd){
         this.userData = res
-        console.log(this.userData.id);
-        this.storageSer.set(this.userData.fname,this.userData.lname,this.userData.mail,this.userData.img)
+        // console.log(this.userData.admin);
+        this.storageSer.set(this.userData.fname,this.userData.lname,this.userData.mail,this.userData.img, this.userData.admin)
       }
       else{
         alert('Password error')

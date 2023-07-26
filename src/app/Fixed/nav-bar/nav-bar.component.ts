@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
 import { StorageService } from 'src/app/Services/storage.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { StorageService } from 'src/app/Services/storage.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-  constructor(private storageSer:StorageService){}
+  constructor(private storageSer:StorageService, private authSer:AuthService){}
   loggedIN(){
     if(this.storageSer.getToken()){
       return true
@@ -15,6 +16,9 @@ export class NavBarComponent {
     else{
       return false
     }
+  }
+  admin(){
+    return this.storageSer.getAdmin()
   }
   logout(){
     this.storageSer.logout()

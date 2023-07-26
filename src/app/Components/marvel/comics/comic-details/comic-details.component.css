@@ -5,5 +5,28 @@
   height: 150px;
 }
 .details{
-  margin-right: 100px;
+  /* margin-right: 100px; */
+}
+.single-review{
+  border-radius: 50px;
+  border-top-left-radius: 0px;
+}
+.review-head{
+  width: fit-content;
+  border-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.rev-body{
+  border-radius: 8px;
+  border-top-left-radius: 0px;
+}
+.rev-img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.single-review{
+  width: 100%;
 }

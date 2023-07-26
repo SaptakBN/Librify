@@ -4,6 +4,7 @@ export class User {
   mail!:string;
   pwd!:string;
   id!:number;
+  admin!:boolean;
   img!:string;
   library!:[];
   review!:[];
