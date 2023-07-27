@@ -23,8 +23,10 @@ export class MarvelComponent implements OnInit {
   }
   public_key:string = '744c369075a2d8a6cdc39dd3c2e9b22b'
   private_key:string = 'd9843fb3d61663e6a72679a8cce7bc9f6d0a9c0b'
+  loader:boolean = false
   constructor(private marvelSer:MarvelService){}
   ngOnInit(): void {
+    this.loader = true
     let date =  Date.now()
     // console.log(date);
     let md5 = new Md5()
@@ -35,6 +37,9 @@ export class MarvelComponent implements OnInit {
         // console.log(res);
         this.super_hero_data.push(res.data.results[0])
         // console.log(this.super_hero_data);
+        setTimeout(() => {
+          this.loader = false
+        }, 1000);
       })
     })
   }

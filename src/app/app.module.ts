@@ -27,6 +27,7 @@ import { ComicDetailsComponent } from './Components/marvel/comics/comic-details/
 import { AdminPanelComponent } from './Components/admin-panel/admin-panel.component';
 import { MakeReqComponent } from './Components/make-req/make-req.component';
 import { PendingReqComponent } from './Components/pending-req/pending-req.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,14 @@ import { PendingReqComponent } from './Components/pending-req/pending-req.compon
     BrowserAnimationsModule,
     CarouselModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      progressBar:true,
+      timeOut:3000,
+      progressAnimation:'decreasing',
+      positionClass:'toast-top-right',
+      preventDuplicates:true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-<div class="container-fluid bg-dark">
+<div *ngIf="loggedIn()" class="container-fluid bg-dark">
   <h1 class="container text-light py-3">My Library</h1>
 </div>
 <div class="container mx-auto my-5">
@@ -9,20 +9,26 @@
       </div>
       <h3 class="my-2">{{userData?.fname}} {{userData?.lname}}</h3>
       <h4 class="my-2">{{userData?.mail}}</h4>
+      <h4 class="my-2">Books in library: {{userData?.library.length}}</h4>
+      <h4 class="my-2">Comics in library: {{userData?.comics.length}}</h4>
     </div>
-    <div class="library  mx-5">
-      <div class="container d-flex">
-        <div class="row">
+    <div class="library w-100 mx-5">
+      <div class="w-100">
+        <div class="row w-100">
           <ng-container *ngFor="let book of userData?.library">
-            <div class="col-3 card my-2 p-5">
-              <img class="w-100" src="https://covers.openlibrary.org/b/id/{{book.cover_id}}-M.jpg" alt=""
-                data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(book?.title, 'book')">
+            <div class="col-3">
+              <div class="card card my-2 p-3">
+                <img class="w-100" src="https://covers.openlibrary.org/b/id/{{book.cover_id}}-M.jpg" alt=""
+                  data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(book?.title, 'book')">
+              </div>
             </div>
           </ng-container>
           <ng-container *ngFor="let comic of userData?.comics">
-            <div class="col-3 card my-2 p-5">
-              <img class="w-100" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" alt=""
-                data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(comic?.title, 'comic')">
+            <div class="col-3">
+              <div class="card card my-2 p-3">
+                <img class="w-100" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" alt=""
+                  data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(comic?.title, 'comic')">
+              </div>
             </div>
           </ng-container>
         </div>

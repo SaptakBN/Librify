@@ -11,3 +11,6 @@ img.rounded-3.ng-star-inserted {
   cursor: pointer;
   box-shadow: 5px 5px 20px grey;
 }
+.container-fluid{
+  min-height:80vh ;
+}

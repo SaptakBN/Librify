@@ -5,3 +5,6 @@
   transform: scale(1.05);
   transition: .2s ease-in-out;
 }
+.container-fluid{
+  min-height:80vh ;
+}

@@ -50,3 +50,6 @@
 .single-review{
   width: 100%;
 }
+.container-fluid{
+  min-height:80vh ;
+}

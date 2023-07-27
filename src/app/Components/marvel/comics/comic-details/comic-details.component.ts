@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { MarvelService } from 'src/app/Services/marvel.service';
 import { StorageService } from 'src/app/Services/storage.service';
+import { ToastService } from 'src/app/Services/toast.service';
 import { Md5 } from 'ts-md5';
 
 @Component({
@@ -18,8 +19,10 @@ export class ComicDetailsComponent implements OnInit {
   modal_img!:any;
   userData!:any;
   reviews:any[]=[];
-  constructor(private aroute: ActivatedRoute, private marvelSer:MarvelService, private storageSer:StorageService, private authSer:AuthService){}
+  loader:boolean = false
+  constructor(private aroute: ActivatedRoute, private marvelSer:MarvelService, private storageSer:StorageService, private authSer:AuthService, private toast: ToastService){}
   ngOnInit(): void {
+    this.loader = true
     this.aroute.paramMap.subscribe(param=>{
       this.comicID = param.get('comicID')
       // console.log(this.comicID);
@@ -53,6 +56,9 @@ export class ComicDetailsComponent implements OnInit {
               })
               // console.log(this.reviews);
             })
+            setTimeout(() => {
+              this.loader = false
+            }, 2000);
           })
       })
     })
@@ -67,35 +73,41 @@ export class ComicDetailsComponent implements OnInit {
       this.authSer.logIN(token).subscribe((res)=>{
         // console.log(res);
         this.userData = res;
-        if(this.userData.comics!=undefined || this.userData.comics.length!=0){
-          let comicMatch = this.userData.comics.filter((v:any)=>v.title==this.comicData.title)
-          // console.log(comicMatch.length);
-          // console.log(this.userData.comics.length);
+        if((this.userData.library.length+this.userData.comics.length)>=5){
+          this.toast.toastWarn('Library limit reached')
+        }else{
+          if(this.userData.comics!=undefined || this.userData.comics.length!=0){
+            let comicMatch = this.userData.comics.filter((v:any)=>v.title==this.comicData.title)
+            // console.log(comicMatch.length);
+            // console.log(this.userData.comics.length);
 
-          if(comicMatch.length==0){
-            this.userData.comics.push(this.comicData)
-            // console.log(this.userData?.comics);
-            this.authSer.addToLibrary(token, this.userData).subscribe(postRes=>{
-              // console.log('book added', postRes);
-            })
-        }
-        else{
-          alert('This comic is alreary in your Library')
-        }
-        }
-        else{
-          // this.userData.comics.push(this.comicData)
-          alert('push book')
-          this.userData.comics.push(this.comicData)
-            console.log(this.userData?.comics);
-            this.authSer.addToLibrary(token, this.userData).subscribe(postRes=>{
-              console.log('book added', postRes);
-            })
+            if(comicMatch.length==0){
+              this.userData.comics.push(this.comicData)
+              // console.log(this.userData?.comics);
+              this.authSer.addToLibrary(token, this.userData).subscribe(postRes=>{
+                // console.log('book added', postRes);
+                this.toast.toastSuccess('Comic has been added to your library')
+              })
+          }
+          else{
+            this.toast.toastWarn('This comic is alreary in your Library')
+          }
+          }
+          else{
+            // this.userData.comics.push(this.comicData)
+            // alert('push book')
+            // this.userData.comics.push(this.comicData)
+              console.log(this.userData?.comics);
+              this.authSer.addToLibrary(token, this.userData).subscribe(postRes=>{
+                // console.log('book added', postRes);
+                this.toast.toastSuccess('Comic has been added to your library')
+              })
+          }
         }
       })
     }
     else{
-      alert('Log in to add this comics to your library')
+      this.toast.toastErr('Log in to add this comics to your library')
     }
   }
   removeFromLibrary(){

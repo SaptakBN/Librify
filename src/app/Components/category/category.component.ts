@@ -13,8 +13,7 @@ import { Md5 } from 'ts-md5';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit{
-  // bestseller_fiction!: any;
-  // bestseller_non_fiction!: any;
+  loader:boolean = false
   featuredCategory: any[] = []
   genre:string[] = ['literature',
   'non_Fiction',
@@ -33,9 +32,7 @@ export class CategoryComponent implements OnInit{
     private openLibrary:LibraryjsonService
   ) {}
   ngOnInit(): void {
-
-
-
+    this.loader = true
   this.genre.forEach((v:any)=>{
       this.openLibrary.carousel_books(v).subscribe((res)=>{
         // console.log(res.splice(0, 12));
@@ -45,9 +42,12 @@ export class CategoryComponent implements OnInit{
           items:res.splice(0, 12)
         }
         this.featuredCategory.push(data)
+        setInterval(()=>{
+          this.loader = false
+        },2000)
       })
     })
-    console.log(this.featuredCategory);
+    // console.log(this.featuredCategory);
 
 }
 category: OwlOptions = {

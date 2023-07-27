@@ -4,9 +4,9 @@
 .more-img{
   height: 150px;
 }
-.details{
-  /* margin-right: 100px; */
-}
+/* .details{
+  margin-right: 100px;
+} */
 .single-review{
   border-radius: 50px;
   border-top-left-radius: 0px;
@@ -29,4 +29,6 @@
 }
 .single-review{
   width: 100%;
+}.container-fluid{
+  min-height:80vh ;
 }

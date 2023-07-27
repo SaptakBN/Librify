@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GoogleAPIService {
+  open_lib_search:string = 'https://openlibrary.org/search.json'
   open_lib:string = 'http://openlibrary.org/subjects'
   google_api:string = 'https://www.googleapis.com/books/v1/volumes';
 
@@ -14,7 +15,7 @@ export class GoogleAPIService {
   getBookBydetails(title:string, author:string):Observable<any>{
     return this.http.get<any>(this.google_api,{
       params:{
-        'q':decodeURI(`intitle:${title.replaceAll(' ','+')}`)
+        'q':decodeURI(`intitle:${title.replaceAll(' ','+')}+inauthor${author.replaceAll(' ', '+')}`)
       }
     })
   }
@@ -30,5 +31,14 @@ export class GoogleAPIService {
   }
   fetchLink(link:string):Observable<any>{
     return this.http.get<any>(link)
+  }
+  openLibSearch(title:string, author:string):Observable<any>{
+    return this.http.get<any>(this.open_lib_search, {
+      params:{
+        title:title.replaceAll(' ', '+'),
+        author:author.replaceAll(' ', '+'),
+        limit:12,
+      }
+    })
   }
 }

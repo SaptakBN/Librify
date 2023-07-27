@@ -27,7 +27,7 @@ const routes: Routes = [
   {path:'category/book-list/:category/book-details/:title',component:BookDetailsComponent},
   {path:'sign-up',component:SignUpComponent},
   {path:'sign-in',component:SignINComponent},
-  {path:'profile',component:ProfileComponent},
+  {path:'profile',component:ProfileComponent, canActivate:[authGuard]},
   {path:'library',component:LibraryComponent,canActivate:[authGuard]},
   {path:'marvel',component:MarvelComponent},
   {path:'marvel/comics/:charID',component:ComicsComponent},

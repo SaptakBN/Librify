@@ -40,7 +40,7 @@
     <ng-container *ngIf="filterBySearch!=undefined && search!=''">
       <div class="mx-2 suggest py-2 bg-light w-75">
         <ng-container *ngFor="let list of filterBySearch.slice(0,5)">
-        <p class=" px-5 py-1" routerLink="book-details/{{list.genre}}/{{list.title}}">{{list.title}} by {{list.authors[0].name}} : {{list.genre}}</p>
+        <p class=" px-5 py-1" routerLink="book-details/{{list.genre}}/{{list.title}}">{{list.title}} by {{list?.authors}} <span *ngIf="list?.authors==undefined">{{list?.authors[0]}}</span>  : {{list.genre}}</p>
       </ng-container>
       </div>
   </ng-container>

@@ -7,7 +7,7 @@ import { User } from '../Classes/user';
   providedIn: 'root'
 })
 export class AuthService {
-  logIN_api = 'http://localhost:3100/user'
+  logIN_api = 'http://localhost:3000/user'
   constructor(private httpSer:HttpClient) { }
   logIN(mail:string):Observable<User[]>{
     return this.httpSer.get<User[]>(`${this.logIN_api}/${mail}`)

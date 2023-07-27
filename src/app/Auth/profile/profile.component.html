@@ -1,2 +1,30 @@
-<p>profile works!</p>
-<img src="{{userData?.img}}" width="200px" alt="">
+
+
+<div class="container-fluid gx-0 d-flex" *ngIf="loggedIn()">
+  <div class="container m-auto">
+    <div class="card col-4 mx-auto p-5">
+      <div class="profile-img mx-auto">
+        <img src="{{userData?.img}}" width="200px" alt="">
+      </div>
+      <div class="p-3 ">
+        <div class="d-flex justify-content-between">
+          <span class="text-light fs-5 fw-light">Name:</span>
+          <span class="text-light fs-5 fw-light">{{userData?.fname}} {{userData?.lname}}</span>
+        </div>
+        <div class="d-flex justify-content-between">
+          <span class="text-light fs-5 fw-light">Mail:</span>
+          <span class="text-light fs-5 fw-light">{{userData?.mail}}</span>
+        </div>
+        <div class="d-flex justify-content-between">
+          <span class="text-light fs-5 fw-light">Library: </span>
+          <span class="text-light fs-5 fw-light">{{userData?.library.length}} books</span>
+        </div>
+        <div class="d-flex justify-content-between">
+          <span class="text-light fs-5 fw-light">Reviews: </span>
+          <span class="text-light fs-5 fw-light">{{userData?.review.length}} reviews</span>
+        </div>
+      </div>
+      <button (click)="logOut()" class=" btn btn-danger">Log Out</button>
+    </div>
+  </div>
+</div>

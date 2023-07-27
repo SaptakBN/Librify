@@ -1,5 +1,10 @@
-<p>marvel works!</p>
-<div class="container mx-auto px-5">
+<div class="container-fluid d-flex">
+  <ng-container *ngIf="loader==true">
+    <div class="spinner-border mx-auto my-auto text-secondary" style="width: 8rem; height: 8rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </ng-container>
+<div class="container mx-auto px-5" *ngIf="!loader">
 <div class="row container-sm mx-auto p-5"  >
   <ng-container *ngFor="let hero of super_hero_data">
     <div class="col-4 my-3" routerLink="comics/{{hero.id}}" [queryParams]="{hero_name:hero.name}">
@@ -9,5 +14,6 @@
       </div>
     </div>
   </ng-container>
+</div>
 </div>
 </div>

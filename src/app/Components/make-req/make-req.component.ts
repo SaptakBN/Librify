@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReqService } from 'src/app/Services/req.service';
 import { StorageService } from 'src/app/Services/storage.service';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
   selector: 'app-make-req',
@@ -10,7 +11,7 @@ import { StorageService } from 'src/app/Services/storage.service';
 })
 export class MakeReqComponent implements OnInit {
   req_form!:FormGroup
-  constructor(private fb:FormBuilder, private reqSer:ReqService, private storageSer:StorageService){}
+  constructor(private fb:FormBuilder, private reqSer:ReqService, private storageSer:StorageService, private toast:ToastService){}
 
   ngOnInit(): void {
     this.req_form = this.fb.group({
@@ -30,7 +31,14 @@ export class MakeReqComponent implements OnInit {
       state:'pending',
     }
     this.reqSer.post_req(req_data).subscribe((res)=>{
-      // console.log(res);
+      console.log(res);
+      this.toast.toastSuccess('Request has been sent')
+    },(err)=>{
+      if(err.status = 500){
+        this.toast.toastErr(err.statusText+' '+'Maximum request limit has been reached.')
+      }
+      // console.log(err);
+
     })
   }
 

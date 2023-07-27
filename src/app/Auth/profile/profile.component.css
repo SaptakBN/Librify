@@ -1,0 +1,18 @@
+.container-fluid{
+  min-height: 90vh;
+  background-image: url('src/assets/img/bg/profile-bg.jpg');
+  background-position: center;
+  background-size: cover;
+}
+.profile-img{
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.profile-img img{
+  width: 150px;
+}
+.card{
+  background-color: rgba(0, 0, 0, 0.708);
+}

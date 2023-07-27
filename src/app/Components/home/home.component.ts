@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   startSearching(){
     this.filterBySearch = this.allBooks.filter((v:any)=>v.title.toLowerCase().includes(this.search.toLowerCase()))
     this.filterBySearch = this.filterBySearch.slice(0,5)
-    // console.log(this.filterBySearch);
+    console.log(this.filterBySearch);
   }
 
   customOptions: OwlOptions = {

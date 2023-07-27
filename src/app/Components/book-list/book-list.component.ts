@@ -21,6 +21,7 @@ export class BookListComponent implements OnInit {
     private openLibrary: LibraryjsonService
   ) {}
   ngOnInit(): void {
+    this.loader = true
     this.current_page = 1
     // this.loader = true
     this.aroute.paramMap.subscribe((param) => {
@@ -30,6 +31,9 @@ export class BookListComponent implements OnInit {
         this.all_books = res
         this.page_books = this.all_books.slice(0,12)
         // console.log(this.page_books);
+        setInterval(() => {
+          this.loader = false
+        }, 2000);
         this.page_books.forEach((v:any)=>{
           if(v.details==undefined){
             this.googleAPI
