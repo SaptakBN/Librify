@@ -1,37 +1,50 @@
-<header class="p-3 text-bg-dark">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a>
+<nav class="navbar navbar-expand-lg " aria-label="Ninth navbar example">
+  <div class="container-xl">
+    <a class="navbar-brand" href="#">Container XL</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a r routerLink="home" class="nav-link px-2 text-secondary">Home</a></li>
-        <li><a routerLink="category" class="nav-link px-2 text-white">Category</a></li>
-        <li><a routerLink="library" class="nav-link px-2 text-white">Library</a></li>
-        <li><a routerLink="marvel" class="nav-link px-2 text-white">Marvel</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+    <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="category">Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="library">Library</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="marvel">Marvel</a>
+        </li>
+
       </ul>
-
-      <div class="text-end">
-        <ng-container *ngIf="loggedIN()">
-          <ng-container *ngIf="admin()">
-            <ng-container *ngIf="admin()=='true' ;else elseblock" >
-              <button class="btn btn-light mx-1" routerLink="admin-panel" >Admin panel</button>
-              <button class="btn btn-danger mx-1" routerLink="pending-req" >Pending requests</button>
-            </ng-container>
-            <ng-template #elseblock >
-              <button class="btn btn-success" routerLink="make-req" >Make a request</button>
-            </ng-template>
-          </ng-container>
-          <button routerLink="profile" class="btn btn-light mx-2" >Profile</button>
-          <button (click)="logout()" class="btn btn-danger" >Log Out</button>
+      <div class="dropdown">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Authentication
+  </button>
+  <ul class="dropdown-menu">
+    <ng-container *ngIf="loggedIN()">
+      <ng-container *ngIf="admin()">
+        <ng-container *ngIf="admin()=='true' ;else elseblock" >
+          <li><a class="dropdown-item btn btn-light" routerLink="admin-panel" >Admin panel</a></li>
+          <li><a class="dropdown-item btn btn-danger" routerLink="pending-req" >Pending requests</a></li>
         </ng-container>
-        <ng-container *ngIf="!loggedIN()">
-          <button routerLink="sign-in" type="button" class="btn btn-outline-light me-2">Login</button>
-          <button routerLink="sign-up" type="button" class="btn btn-warning">Sign-up</button>
-        </ng-container>
-      </div>
+        <ng-template #elseblock >
+          <li><a class="dropdown-item btn btn-success" routerLink="make-req" >Make a request</a></li>
+        </ng-template>
+      </ng-container>
+      <li><a routerLink="profile" class="dropdown-item btn btn-light" >Profile</a></li>
+      <li><a (click)="logout()" class="dropdown-item btn btn-danger" >Log Out</a></li>
+    </ng-container>
+    <ng-container *ngIf="!loggedIN()">
+      <li><a routerLink="sign-in" type="button" class="dropdown-item btn btn-outline-light ">Login</a></li>
+      <li><a routerLink="sign-up" type="button" class="dropdown-item btn btn-warning">Sign-up</a></li>
+    </ng-container>
+  </ul>
+</div>
     </div>
   </div>
-</header>
+</nav>

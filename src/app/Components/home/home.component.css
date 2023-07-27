@@ -1,4 +1,11 @@
 
+  @import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Poppins&display=swap');
+.display-1{
+  font-family: 'Poiret One', cursive;
+  transform: translateY(100px);
+  font-size: 8em;
+  color: rgb(141, 114, 80);
+}
 .owl-carousel .owl-item img {
   display: flex;
   /* width: auto; */
@@ -12,20 +19,20 @@ img.rounded-3.ng-star-inserted {
 }
 .search-box{
   position: absolute;
-  position: absolute;
   z-index: 100;
-  transform: translateY(-30px);
+  transform: translateY(-220px);
 
 }
 .search-box input{
   height: 60px;
   outline: none;
-  padding: 0px 30px;
+  padding: 0px 25px;
   font-size: large;
   color: grey;
 }
 .search-btn{
-  /* position: absolute; */
+  margin-left: auto;
+  position: absolute;
   height: fit-content;
   transform: translate(-55px, 11px);
 }
@@ -37,4 +44,11 @@ img.rounded-3.ng-star-inserted {
 .suggest p:hover{
   background-color: bisque;
   cursor: pointer;
+}
+.container-fluid{
+  background-image: url('src/assets/img/bg/home-bg.jpg');
+  min-height: 100vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgb(59,193,200);
 }
