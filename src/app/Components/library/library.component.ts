@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { StorageService } from 'src/app/Services/storage.service';
@@ -9,7 +9,11 @@ import { ToastService } from 'src/app/Services/toast.service';
   templateUrl: './library.component.html',
   styleUrls: ['./library.component.css'],
 })
-export class LibraryComponent implements OnInit {
+export class LibraryComponent implements OnInit, AfterViewInit {
+  ngAfterViewInit(): void {
+    // console.log(this.modal);
+
+  }
   reviewBookData!: any;
   reviewData!: any;
   reviewForTitle!: any;
@@ -20,13 +24,13 @@ export class LibraryComponent implements OnInit {
     private storageSer: StorageService,
     private toast:ToastService,
     private router:Router
-  ) {}
+    ) {}
   ngOnInit(): void {
     let token = sessionStorage.getItem('token');
     if (token != null) {
-      this.authSer.logIN(token).subscribe((userRes) => {
+      this.authSer.getSingleUser(token).subscribe((userRes) => {
         this.userData = userRes;
-        console.log(this.userData);
+        // console.log(this.userData);
       });
     }
   }
@@ -46,6 +50,7 @@ export class LibraryComponent implements OnInit {
         if (token != null) {
           this.authSer.addToLibrary(token, this.userData).subscribe((res) => {
             // console.log(res);
+            this.toast.toastErr('This book has been removed from your library')
           });
         }
         break;
@@ -59,6 +64,7 @@ export class LibraryComponent implements OnInit {
         if (token != null) {
           this.authSer.addToLibrary(token, this.userData).subscribe((res) => {
             // console.log(res);
+            this.toast.toastErr('This comic has been removed from your library')
           });
         }
         break;
@@ -66,25 +72,6 @@ export class LibraryComponent implements OnInit {
       default:
         break;
     }
-  }
-  reviewFor(title: string, type: string) {
-    let reviewPresent = false;
-    this.reviewType = type;
-    this.reviewForTitle = title;
-    let token = this.storageSer.getToken();
-    if (token != null)
-      this.authSer.logIN(token).subscribe((res) => {
-        this.userData = res;
-        this.userData.review.map((v: any) => {
-          if (v.title == this.reviewForTitle) {
-            this.reviewData = v.review;
-            reviewPresent = true;
-          }
-        });
-        if (reviewPresent == false) {
-          this.reviewData = '';
-        }
-      });
   }
   saveReview() {
     if (this.reviewData != '') {
@@ -108,6 +95,7 @@ export class LibraryComponent implements OnInit {
                     .addToLibrary(token, this.userData)
                     .subscribe((res) => {
                       // console.log(res);
+                      this.toast.toastSuccess('Your review has been registered')
                     });
                 }
               }
@@ -133,6 +121,7 @@ export class LibraryComponent implements OnInit {
                     .addToLibrary(token, this.userData)
                     .subscribe((res) => {
                       // console.log(res);
+                        this.toast.toastSuccess('Your review has been registered')
                     });
                 }
               }
@@ -143,6 +132,8 @@ export class LibraryComponent implements OnInit {
         default:
           break;
       }
+    }else{
+      this.toast.toastWarn('Review not registered')
     }
   }
   updateReview() {
@@ -155,11 +146,12 @@ export class LibraryComponent implements OnInit {
             // console.log(this.userData);
             this.authSer.addToLibrary(token, this.userData).subscribe((res) => {
               // console.log(res);
+              this.toast.toastSuccess('Your review has been updated')
             });
           }
         }
       });
-    }
+    }else this.toast.toastWarn('Review not registered')
   }
   deleteReview(title: string, type: string) {
     let token = this.storageSer.getToken();
@@ -171,6 +163,7 @@ export class LibraryComponent implements OnInit {
           this.authSer.addToLibrary(token, this.userData).subscribe((res) => {
             // console.log(res);
             this.reviewData = '';
+            this.toast.toastSuccess('Your review has been deleted')
           });
         }
       });
@@ -196,19 +189,19 @@ export class LibraryComponent implements OnInit {
           this.reviewBookData = this.userData.library.filter(
             (d: any) => title == d.title
           );
-          console.log(this.reviewBookData[0].cover_id);
+          // console.log(this.reviewBookData[0].cover_id);
           break;
         case 'comic':
           this.reviewBookData = this.userData.comics.filter(
             (d: any) => title == d.title
           );
-          console.log(this.reviewBookData);
+          // console.log(this.reviewBookData);
           break;
 
         default:
           break;
       }
-      this.authSer.logIN(token).subscribe((res) => {
+      this.authSer.getSingleUser(token).subscribe((res) => {
         this.userData = res;
         this.userData.review.map((v: any) => {
           if (v.title == this.reviewForTitle) {

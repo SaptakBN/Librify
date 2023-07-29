@@ -27,24 +27,49 @@ export class SignINComponent implements OnInit {
     });
   }
   signIN() {
-    this.authSer.logIN(this.signINForm.value.mail).subscribe((res: any) => {
-      if (this.signINForm.value.pwd === res.pwd) {
-        this.userData = res;
-        // console.log(this.userData.admin);
-        this.storageSer.set(
-          this.userData.fname,
-          this.userData.lname,
-          this.userData.mail,
-          this.userData.img,
-          this.userData.admin
-        );
-        this.toaster.toastSuccess('Logged in succesfully');
-        this.router.navigate(['/profile'])
+    this.authSer.getAllUser().subscribe(res=>{
+      let u = res.find(user=>user.mail==this.signINForm.value.mail)
+      if(u!=undefined){
+        if(u.pwd==this.signINForm.value.pwd){
+          this.userData = u
+          this.storageSer.set(
+                    this.userData.fname,
+                    this.userData.lname,
+                    this.userData.mail,
+                    this.userData.img,
+                    this.userData.admin,
+                    this.userData.token
+                  );
+                  this.toaster.toastSuccess('Logged in succesfully');
+                  this.router.navigate(['/profile'])
+        }else{
+          this.toaster.toastErr('Password error')
+        }
+      }else{
+        this.toaster.toastWarn('User not found please register')
+        this.router.navigate(['sign-up'])
       }
-      else {
-        this.toaster.toastErr('Password Error');
-        // alert('Password error')
-      }
-    });
-  }
+    })
+  //   this.authSer.logIN(this.signINForm.value.mail).subscribe((res: any) => {
+  //     if (this.signINForm.value.pwd === res.pwd) {
+  //       this.userData = res;
+  //       // console.log(this.userData.admin);
+  //       this.storageSer.set(
+  //         this.userData.fname,
+  //         this.userData.lname,
+  //         this.userData.mail,
+  //         this.userData.img,
+  //         this.userData.admin,
+  //         this.userData.token
+  //       );
+  //       this.toaster.toastSuccess('Logged in succesfully');
+  //       this.router.navigate(['/profile'])
+  //     }
+  //     else {
+  //       this.toaster.toastErr('Password Error');
+  //       // alert('Password error')
+  //     }
+  //   });
+  // }
+}
 }

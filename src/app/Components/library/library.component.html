@@ -15,6 +15,7 @@
     <div class="library w-100 mx-5">
       <div class="w-100">
         <div class="row w-100">
+
           <ng-container *ngFor="let book of userData?.library">
             <div class="col-3">
               <div class="card card my-2 p-3">
@@ -49,21 +50,25 @@
       <div class="modal-body d-flex flex-column">
         <ng-container *ngIf="reviewType=='book'">
           <div class="d-flex">
-            <img class="w-50 rounded-2 mx-2" src="https://covers.openlibrary.org/b/id/{{reviewBookData[0].cover_id}}-L.jpg"
-            alt="">
+            <img class="w-50 rounded-2 mx-2"
+              src="https://covers.openlibrary.org/b/id/{{reviewBookData[0].cover_id}}-M.jpg" alt="">
             <div>
               <h1 class="fs-5" id="cardLabel">Title: {{reviewForTitle}}</h1>
               <h1 class="fs-5" id="cardLabel">Author: {{reviewBookData[0]?.authors}}</h1>
             </div>
           </div>
           <div class="d-flex justify-content-between my-2">
-            <button (click)="remove(reviewBookData[0].title, 'book')" class="btn btn-danger w-100 btn-sm mx-2">Remove from library</button>
+            <button (click)="remove(reviewBookData[0].title, 'book')" data-bs-dismiss="modal" class="btn btn-danger w-100 btn-sm mx-2">Remove
+              from library</button>
             <button *ngIf="!reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal" data-bs-target="#reviewModal"
-              (click)="reviewFor(reviewBookData[0].title, 'book')" class="btn btn-success w-100 btn-sm mx-2">Give a Review</button>
-            <button *ngIf="reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal" data-bs-target="#editReviewModal"
-              (click)="reviewFor(reviewBookData[0].title, 'book')" class="btn btn-dark w-100 btn-sm mx-2">Edit Review</button>
+              data-bs-dismiss="modal"
+              class="btn btn-success w-100 btn-sm mx-2">Give a Review</button>
+            <button *ngIf="reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal"
+              data-bs-target="#editReviewModal" data-bs-dismiss="modal"
+               data-bs-dismiss="modal"
+              class="btn btn-dark w-100 btn-sm mx-2">Edit Review</button>
             <button *ngIf="reviewOrNot(reviewBookData[0].title)" (click)="deleteReview(reviewBookData[0].title, 'book')"
-              class="btn btn-danger w-100 btn-sm mx-2">Delete Review</button>
+              class="btn btn-danger w-100 btn-sm mx-2" data-bs-dismiss="modal">Delete Review</button>
           </div>
         </ng-container>
         <ng-container *ngIf="reviewType=='comic'">
@@ -76,12 +81,17 @@
             </div>
           </div>
           <div class="d-flex justify-content-between my-2">
-            <button (click)="remove(reviewBookData[0].title, 'comic')" class="btn btn-danger w-100 btn-sm mx-2">Remove from library</button>
+            <button (click)="remove(reviewBookData[0].title, 'comic')" class="btn btn-danger w-100 btn-sm mx-2"
+              data-bs-dismiss="modal">Remove from library</button>
             <button *ngIf="!reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal" data-bs-target="#reviewModal"
-              (click)="reviewFor(reviewBookData[0].title, 'comic')" class="btn btn-success w-100 btn-sm mx-2">Give a Review</button>
-            <button *ngIf="reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal" data-bs-target="#editReviewModal"
-              (click)="reviewFor(reviewBookData[0].title, 'comic')" class="btn btn-dark w-100 btn-sm mx-2">Edit Review</button>
-            <button *ngIf="reviewOrNot(reviewBookData[0].title)" (click)="deleteReview(reviewBookData[0].title, 'comic')"
+              data-bs-dismiss="modal" 
+              class="btn btn-success w-100 btn-sm mx-2">Give a Review</button>
+            <button *ngIf="reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal"
+              data-bs-target="#editReviewModal" data-bs-dismiss="modal"
+               class="btn btn-dark w-100 btn-sm mx-2">Edit
+              Review</button>
+            <button *ngIf="reviewOrNot(reviewBookData[0].title)"
+              (click)="deleteReview(reviewBookData[0].title, 'comic')" data-bs-dismiss="modal"
               class="btn btn-danger w-100 btn-sm mx-2">Delete Review</button>
           </div>
         </ng-container>
@@ -105,7 +115,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button (click)="saveReview()" type="submit" class="btn btn-primary">Save changes</button>
+        <button (click)="saveReview()" data-bs-dismiss="modal" aria-label="Close" type="submit"
+          class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -124,7 +135,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button (click)="updateReview()" type="submit" class="btn btn-primary">Update review</button>
+        <button (click)="updateReview()" type="submit" data-bs-dismiss="modal" class="btn btn-primary">Update
+          review</button>
       </div>
     </div>
   </div>

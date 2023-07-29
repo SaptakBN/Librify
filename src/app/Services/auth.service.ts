@@ -21,4 +21,7 @@ export class AuthService {
   getAllUser():Observable<User[]>{
     return this.httpSer.get<User[]>(this.logIN_api)
   }
+  getSingleUser(id:string):Observable<User[]>{
+    return this.httpSer.get<User[]>(`${this.logIN_api}/${id}`)
+  }
 }

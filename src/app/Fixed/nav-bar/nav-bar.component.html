@@ -1,6 +1,6 @@
-<nav class="navbar fixed-top bg-info navbar-expand-lg" aria-label="Ninth navbar example">
+<nav class="navbar fixed-top navbar-expand-lg" navbar (scroll)="onWindowScroll()" aria-label="Ninth navbar example">
   <div class="container-xl">
-    <a class="navbar-brand" href="#">Container XL</a>
+    <a class="navbar-brand" navlink href="#"><img [src]="logo" width="150px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,43 +8,51 @@
     <div class="collapse navbar-collapse" id="navbarsExample07XL">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+          <a class="btn nav-link active" navlink aria-current="page" routerLink="home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="category">Category</a>
+          <a class="btn nav-link active" navlink aria-current="page" routerLink="category">Category</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="library">Library</a>
+          <a class="btn nav-link active" navlink aria-current="page" routerLink="library">Library</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="marvel">Marvel</a>
+          <a class="btn nav-link active" navlink aria-current="page" routerLink="marvel">Marvel</a>
         </li>
 
       </ul>
-      <div class="dropdown">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Authentication
-  </button>
-  <ul class="dropdown-menu">
-    <ng-container *ngIf="loggedIN()">
+
+      <ul class="navbar-nav me-2 ms-auto mb-2 mb-lg-0">
+        <ng-container *ngIf="!loggedIN()">
+          <li><a routerLink="sign-up" type="button" class=" btn nav-link active"><i class="fa-solid fa-user-plus mx-2" ></i>Sign up</a></li>
+          <li><a routerLink="sign-in" type="button" class=" btn nav-link active"><i class="fa-solid fa-right-to-bracket mx-2"></i>Login</a></li>
+        </ng-container>
+      </ul>
+      <ng-container *ngIf="loggedIN()">
+    <div class="dropdown me-3">
+<a class="btn position-reletive profile-img" navlink type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <img [src]="profile_img" width="50px" >
+  <span *ngIf="admin()=='true'&&notification!=0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    {{notification}}
+    <span class="visually-hidden">pending requests</span>
+  </span>
+</a>
+      <ul class="dropdown-menu">
       <ng-container *ngIf="admin()">
         <ng-container *ngIf="admin()=='true' ;else elseblock" >
-          <li><a class="dropdown-item btn btn-light" routerLink="admin-panel" >Admin panel</a></li>
-          <li><a class="dropdown-item btn btn-danger" routerLink="pending-req" >Pending requests</a></li>
+          <li><a class="dropdown-item btn" routerLink="admin-panel" >Admin panel</a></li>
+          <li><a class="dropdown-item btn" routerLink="pending-req" >Pending requests <span class="badge text-bg-danger">{{notification}}</span></a></li>
         </ng-container>
         <ng-template #elseblock >
-          <li><a class="dropdown-item btn btn-success" routerLink="make-req" >Make a request</a></li>
+          <li><a class="dropdown-item btn" routerLink="make-req" >Make a request</a></li>
         </ng-template>
       </ng-container>
-      <li><a routerLink="profile" class="dropdown-item btn btn-light" >Profile</a></li>
-      <li><a (click)="logout()" class="dropdown-item btn btn-danger" >Log Out</a></li>
+      <li><a routerLink="profile" class="dropdown-item btn " >Profile</a></li>
+      <li><a (click)="logout()" class="dropdown-item btn danger" >Log Out<i class="fa-solid fa-right-from-bracket mx-2" ></i></a></li>
+    </ul>
+  </div>
     </ng-container>
-    <ng-container *ngIf="!loggedIN()">
-      <li><a routerLink="sign-in" type="button" class="dropdown-item btn btn-outline-light ">Login</a></li>
-      <li><a routerLink="sign-up" type="button" class="dropdown-item btn btn-warning">Sign-up</a></li>
-    </ng-container>
-  </ul>
-</div>
+
     </div>
   </div>
 </nav>

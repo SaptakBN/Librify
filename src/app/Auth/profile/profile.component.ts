@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/Classes/user';
 import { AuthService } from 'src/app/Services/auth.service';
 import { StorageService } from 'src/app/Services/storage.service';
 import { ToastService } from 'src/app/Services/toast.service';
@@ -16,9 +17,9 @@ export class ProfileComponent implements OnInit{
   ngOnInit(): void {
     let token = this.storageSer.getToken()
     if(token){
-      this.authSer.logIN(token).subscribe((res)=>{
-        // console.log(res);
+      this.authSer.getSingleUser(token).subscribe(res=>{
         this.userData = res
+        // console.log(this.userData);
       })
     }
   }

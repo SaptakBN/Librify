@@ -4,4 +4,5 @@ export class Req {
   mail!:string;
   title!:string;
   author!:string;
+  state!:string;
 }

@@ -5,6 +5,7 @@ export class User {
   pwd!:string;
   id!:number;
   admin!:boolean;
+  token!:string;
   img!:string;
   library!:[];
   review!:[];

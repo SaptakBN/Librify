@@ -1,7 +1,6 @@
-<p>pending-req works!</p>
-<div class="container mx-auto">
+<div class="container mx-auto" *ngIf="loggedIn()">
   <table class="mx-auto">
-    <thead >
+    <thead>
       <tr class="bg-dark ">
         <th class="fw-light text-light p-3 col-2">Book Title:</th>
         <th class="fw-light text-light p-3 col-2">Author:</th>
@@ -11,7 +10,7 @@
         <th class="fw-light text-light p-3 col-2">Action</th>
       </tr>
     </thead>
-    <tbody >
+    <tbody>
       <ng-container *ngFor="let req of all_req">
         <tr [ngClass]="{'bg-success':req.state=='granted','bg-danger':req.state=='pending'}">
           <td class="fw-light text-light p-3 col-2">{{req.title}}</td>
@@ -19,7 +18,8 @@
           <td class="fw-light text-light p-3 col-2">{{req.fname}}</td>
           <td class="fw-light text-light p-3 col-2">{{req.lname}}</td>
           <td class="fw-light text-light p-3 col-2">{{req.state}}</td>
-          <td class="fw-light text-light p-3 col-2"><button (click)="forReq(req?.title, req?.author, req?.id)" *ngIf="req.state=='pending'" class="btn btn-primary">Add book</button></td>
+          <td class="fw-light text-light p-3 col-2"><button (click)="forReq(req?.title, req?.author, req?.id)"
+              *ngIf="req.state=='pending'" class="btn btn-primary">Add book</button><i class="fa-solid fa-check fs-2xl" style="color: #ffffff;" *ngIf="req.state=='granted'"></i></td>
         </tr>
       </ng-container>
     </tbody>
@@ -30,11 +30,13 @@
       <h1 class="text-center fw-light">Add requsted books</h1>
       <div class="d-flex justify-content-between my-2">
         <label for="title" class="my-auto">Book Title:</label>
-        <input type="text" name="title" id="title" formControlName="title" [value]="currentreq?.title" class="w-75 p-2 rounded-2 border-2 border-primary border">
+        <input type="text" name="title" id="title" formControlName="title" [value]="currentreq?.title"
+          class="w-75 p-2 rounded-2 border-2 border-primary border">
       </div>
       <div class="d-flex justify-content-between my-2">
         <label for="author" class="my-auto">Book Author:</label>
-        <input type="text" name="author" id="author" formControlName="author" [value]="currentreq?.author" class="w-75 p-2 rounded-2 border-2 border-primary border">
+        <input type="text" name="author" id="author" formControlName="author" [value]="currentreq?.author"
+          class="w-75 p-2 rounded-2 border-2 border-primary border">
       </div>
       <div class="d-flex justify-content-between my-2">
         <label for="author" class="my-auto">Select genre:</label>
@@ -68,7 +70,7 @@
             <img width="100px" src="https://covers.openlibrary.org/b/id/{{book.cover_i}}-M.jpg" alt="">
             <h4>{{book?.title}}</h4>
             <h4>{{book?.author_name}}</h4>
-            <button (click)="addToSite(book.cover_i, i)" >Select</button>
+            <button (click)="addToSite(book.cover_i, i)">Select</button>
           </div>
         </div>
       </ng-container>

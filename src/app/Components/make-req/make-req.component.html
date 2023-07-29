@@ -1,4 +1,4 @@
-<div class="container mx-auto">
+<div class="container mx-auto" *ngIf="loggedIn()">
   <form (ngSubmit)="onSubmit()" [formGroup]="req_form">
     <div class="card w-50 mx-auto p-5 m-5">
       <h1 class="text-center fw-light">Make a request</h1>

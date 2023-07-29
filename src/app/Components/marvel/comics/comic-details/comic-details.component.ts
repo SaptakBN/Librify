@@ -36,7 +36,7 @@ export class ComicDetailsComponent implements OnInit {
         // console.log(this.comicData);
         let token = this.storageSer.getToken()
         if(token)
-        this.authSer.logIN(token).subscribe((singleRes)=>{
+        this.authSer.getSingleUser(token).subscribe((singleRes)=>{
           this.userData = singleRes
         })
           this.authSer.getAllUser().subscribe((allRes)=>{
@@ -70,7 +70,7 @@ export class ComicDetailsComponent implements OnInit {
   addToLibrary(){
     let token = this.storageSer.getToken()
     if(token!=null){
-      this.authSer.logIN(token).subscribe((res)=>{
+      this.authSer.getSingleUser(token).subscribe((res)=>{
         // console.log(res);
         this.userData = res;
         if((this.userData.library.length+this.userData.comics.length)>=5){
@@ -87,6 +87,7 @@ export class ComicDetailsComponent implements OnInit {
               this.authSer.addToLibrary(token, this.userData).subscribe(postRes=>{
                 // console.log('book added', postRes);
                 this.toast.toastSuccess('Comic has been added to your library')
+                this.toast.toastWarn(`${5-(this.userData.library.length+this.userData.comics.length)} choices remaining`)
               })
           }
           else{
@@ -101,6 +102,7 @@ export class ComicDetailsComponent implements OnInit {
               this.authSer.addToLibrary(token, this.userData).subscribe(postRes=>{
                 // console.log('book added', postRes);
                 this.toast.toastSuccess('Comic has been added to your library')
+                this.toast.toastWarn(`${5-(this.userData.library.length+this.userData.comics.length)} choices remaining`)
               })
           }
         }
@@ -113,7 +115,7 @@ export class ComicDetailsComponent implements OnInit {
   removeFromLibrary(){
     let token = this.storageSer.getToken()
     if(token!=null){
-      this.authSer.logIN(token).subscribe(res=>{
+      this.authSer.getSingleUser(token).subscribe(res=>{
         this.userData = res
         this.userData.comics.map((v:any , i:any )=>{
           if(v.title==this.comicData.title){

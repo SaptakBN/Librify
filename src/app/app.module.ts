@@ -63,7 +63,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ToastrModule.forRoot({
       progressBar:true,
-      timeOut:3000,
+      timeOut:4000,
       progressAnimation:'decreasing',
       positionClass:'toast-top-right',
       preventDuplicates:true,

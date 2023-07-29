@@ -1,18 +1,14 @@
-.profile-img{
+.profile-img {
   height: 200px;
   width: 200px;
   border-radius: 50%;
   overflow: hidden;
 }
-.profile{
+.profile {
   /* border-right: 2px solid gray; */
   padding-right: 100px;
 }
-textarea{
+textarea {
   height: 200px;
   padding: 20px;
 }
-/* img{ */
-  /* min-height: 150px; */
-  /* width: auto; */
-/* } */

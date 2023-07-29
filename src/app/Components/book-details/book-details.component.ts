@@ -49,7 +49,7 @@ export class BookDetailsComponent implements OnInit {
         }
         this.token = this.storageSer.getToken();
         if (this.token != null) {
-          this.authSer.logIN(this.token).subscribe((res) => {
+          this.authSer.getSingleUser(this.token).subscribe((res) => {
             this.userData = res;
             // console.log(this.userData);
           });
@@ -101,7 +101,7 @@ export class BookDetailsComponent implements OnInit {
     // console.log(library);
     if (token != null) {
       if((this.userData.library.length+this.userData.comics.length)>=5){
-        this.toast.toastWarn('Library book limit is 5')
+        this.toast.toastWarn('Library book limit is 5.')
       }
       else{
         if (library.length == 0) {
@@ -116,6 +116,7 @@ export class BookDetailsComponent implements OnInit {
             .subscribe((updatedRes) => {
               // console.log(updatedRes);
               this.toast.toastInfo(`${bookInfo.title} added to library`)
+              this.toast.toastWarn(`${5-(this.userData.library.length+this.userData.comics.length)} choices remaining`)
             });
         } else {
         this.toast.toastWarn(`${this.bookData?.details?.volumeInfo.title} Book already exists in your library`)
