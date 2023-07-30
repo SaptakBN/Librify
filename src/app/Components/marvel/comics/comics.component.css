@@ -8,3 +8,21 @@
 }.container-fluid{
   min-height:80vh ;
 }
+.banner-box{
+  background-size: 100vw auto;
+  background-position: top 4.4em center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 110vh;
+}
+
+*{
+  font-family: 'Josefin Sans', sans-serif;
+}
+.main-box{
+  box-shadow: 0px -50px 100px black;
+}
+.banner-box h1{
+  position: fixed;
+  transform: translateY(50vh);
+}

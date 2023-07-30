@@ -53,3 +53,16 @@
 .container-fluid{
   min-height:80vh ;
 }
+.owl-carousel .owl-item.ng-star-inserted {
+  display: flex;
+  /* width: auto; */
+  height: 300px!important;
+  width: 180.2px;
+}
+img.rounded-3 {
+  height: 250px;
+  display: flex;
+  margin: 0px auto;
+  cursor: pointer;
+  /* box-shadow: 5px 5px 20px grey; */
+}

@@ -9,7 +9,7 @@ import { Md5 } from 'ts-md5';
 })
 export class MarvelComponent implements OnInit {
   super_hero_data:any[]=[]
-  super_hero = [1009610, 1009368, 1009220, 1009664, 1009268 , 1011006, 1009351, 1009187, 1009189]
+  super_hero = [1009610, 1009368, 1009220, 1009664, 1009268 , 1011006, 1009351, 1009187]
   super_heroID = {
     spider_man:1009610,
     iron_man:1009368,

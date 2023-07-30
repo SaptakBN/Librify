@@ -1,10 +1,10 @@
-.owl-carousel .owl-item img {
+.owl-carousel .owl-item {
   display: flex;
   /* width: auto; */
   height: 300px!important;
+  width: 180.2px;
 }
 img.rounded-3.ng-star-inserted {
-  width: auto;
   height: 250px;
   display: flex;
   margin: 0px auto;
@@ -13,4 +13,10 @@ img.rounded-3.ng-star-inserted {
 }
 .container-fluid{
   min-height:80vh ;
+}
+.owl-nav.ng-star-inserted {
+  margin-top: -30px!important;
+}
+.main-box{
+  margin: 5em auto 0.5em auto;
 }

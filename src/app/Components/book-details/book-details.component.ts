@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { AuthService } from 'src/app/Services/auth.service';
 import { GoogleAPIService } from 'src/app/Services/google-api.service';
 import { LibraryjsonService } from 'src/app/Services/libraryjson.service';
@@ -21,7 +22,7 @@ export class BookDetailsComponent implements OnInit {
   userData!: any;
   reviews: any[] = [];
   loader: boolean = false;
-
+  genBooks!:any
   constructor(
     private aroute: ActivatedRoute,
     private googleSer: GoogleAPIService,
@@ -39,6 +40,8 @@ export class BookDetailsComponent implements OnInit {
       this.book_title = param.get('title');
       // console.log(this.genre, this.book_title);
       this.openLibrary.carousel_books(this.genre).subscribe((res) => {
+        this.genBooks = res
+        console.log(this.genBooks);
         this.bookData = res.find((book: any) => book.title == this.book_title);
         // console.log(this.bookData);
 
@@ -156,4 +159,38 @@ export class BookDetailsComponent implements OnInit {
       800
     );
   }
+  category: OwlOptions = {
+    loop: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    autoWidth:false,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    navText: ['', ''],
+    rtl:false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 4,
+      },
+      1140: {
+        items: 5,
+      },
+      1340: {
+        items: 6,
+      },
+    },
+    nav: true,
+  };
 }

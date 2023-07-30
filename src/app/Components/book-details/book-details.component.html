@@ -6,52 +6,72 @@
   </ng-container>
 
 <div class="container mx-auto my-5" *ngIf="!loader">
-  <div class="d-flex">
-    <div class="">
-      <img class="my-5 rounded" src="https://covers.openlibrary.org/b/id/{{bookData?.cover_id}}-L.jpg" alt="">
-    </div>
-    <div class="card p-5 border-0">
-      <h1 class="">{{bookData?.details?.volumeInfo?.title}}</h1>
-      <h5 class="mb-3">Author: {{bookData?.details?.volumeInfo?.authors}}</h5>
-      <div *ngIf="bookData?.details?.volumeInfo?.averageRating!=undefined" class="star mb-3" [ngStyle]="{'width.px':(bookData?.details?.volumeInfo?.averageRating/5)*100}">
-        <img src="assets/img/star.png" width="100px" alt="">
+  <div class="my-5 mx-auto">
+    <div class="d-flex">
+      <div class="">
+        <img class="my-5 rounded" src="https://covers.openlibrary.org/b/id/{{bookData?.cover_id}}-L.jpg" alt="">
       </div>
-      <h4 class="mb-3">{{bookData?.details?.volumeInfo?.subtitle}}</h4>
-      <div class="description d-flex flex-column">
-        <p [innerHTML]="description"></p>
-        <a class="ms-auto para-btn" *ngIf="description?.length==800" (click)="expand()">See more</a>
-        <a class="ms-auto para-btn" *ngIf="description?.length>800" (click)="collapse()">Collapse</a>
-        <p>Subject: <span class="tag rounded-pill mx-1 px-2" *ngFor="let subject of bookData?.subject.slice(0,3)" > {{subject}} </span></p>
-        <div class="d-flex details-card justify-content-between">
-          <p>Published on {{bookData?.details?.volumeInfo?.publishedDate | date}}</p>
-          <p>Publisher: {{bookData?.details?.volumeInfo?.publisher}}</p>
-          <p *ngIf="bookData?.details?.volumeInfo?.pageCount!=undefined">Number of pages: {{bookData?.details?.volumeInfo?.pageCount}}</p>
-          <p *ngIf="bookData?.details?.volumeInfo?.maturityRating!=undefined">Maturity Rating: {{bookData?.details?.volumeInfo?.maturityRating.replace('_', ' ') | titlecase}}</p>
-          <p *ngIf="bookData?.details?.volumeInfo?.categories!=undefined">Catagories: {{bookData?.details?.volumeInfo?.categories}}</p>
+      <div class="card p-5 pe-3 border-0">
+        <h1 class="">{{bookData?.details?.volumeInfo?.title}}</h1>
+        <h5 class="mb-3">Author: {{bookData?.details?.volumeInfo?.authors}}</h5>
+        <div *ngIf="bookData?.details?.volumeInfo?.averageRating!=undefined" class="star mb-3" [ngStyle]="{'width.px':(bookData?.details?.volumeInfo?.averageRating/5)*100}">
+          <img src="assets/img/star.png" width="100px" alt="">
         </div>
-        <div class="d-flex justify-content-center">
-          <ng-container *ngIf="inLibrary()==0" >
-            <button class="btn btn-primary w-50 me-2" (click)="addToLibrary()" >Add to Library</button>
-          </ng-container>
-          <ng-container *ngIf="inLibrary()>0"  >
-            <button class="btn btn-danger w-50 me-2" (click)="removeFromLibrary()" >Remove from Library</button>
-          </ng-container><br>
-          <a class="btn btn-success w-50 ms-2" [href]="bookData?.details?.saleInfo?.buyLink" *ngIf="bookData?.details?.saleInfo?.saleability=='FOR_SALE'" >Book available for Purchase</a>
-        </div>
-        <div class="reviews my-3">
-          <h5 class="d-flex px-4 mb-0 py-3 bg-dark-subtle review-head">Reviews({{reviews.length}})</h5>
-          <div class="bg-dark-subtle p-4 rev-body">
-            <ng-container *ngFor="let rev of reviews">
-              <div class="d-flex w-100">
-                <div class="rev-img">
-                  <img class="review-img my-auto" width="50px" src="{{rev?.img}}" alt="">
-                </div>
-                <p class="d-flex justify-content-between single-review bg-primary text-light mx-2 p-3 fs-5">{{rev.review.review}} <span class="name fw-light fst-italic fs-6" >by {{rev.fname}} {{rev.lname}}</span></p>
-              </div>
+        <h4 class="mb-3">{{bookData?.details?.volumeInfo?.subtitle}}</h4>
+        <div class="description d-flex flex-column">
+          <p [innerHTML]="description"></p>
+          <a class="ms-auto para-btn" *ngIf="description?.length==800" (click)="expand()">See more</a>
+          <a class="ms-auto para-btn" *ngIf="description?.length>800" (click)="collapse()">Collapse</a>
+          <p>Subject: <span class="tag rounded-pill mx-1 px-2" *ngFor="let subject of bookData?.subject.slice(0,3)" > {{subject}} </span></p>
+          <div class="d-flex details-card justify-content-evenly">
+            <p>Published on {{bookData?.details?.volumeInfo?.publishedDate | date}}</p>
+            <p>Publisher: {{bookData?.details?.volumeInfo?.publisher}}</p>
+            <p *ngIf="bookData?.details?.volumeInfo?.pageCount!=undefined">Number of pages: {{bookData?.details?.volumeInfo?.pageCount}}</p>
+            <p *ngIf="bookData?.details?.volumeInfo?.maturityRating!=undefined">Maturity Rating: {{bookData?.details?.volumeInfo?.maturityRating.replace('_', ' ') | titlecase}}</p>
+            <p *ngIf="bookData?.details?.volumeInfo?.categories!=undefined">Catagories: {{bookData?.details?.volumeInfo?.categories}}</p>
+          </div>
+          <div class="d-flex justify-content-center">
+            <ng-container *ngIf="inLibrary()==0" >
+              <button class="btn btn-outline-dark w-50 me-2" (click)="addToLibrary()" >Add to Library</button>
             </ng-container>
+            <ng-container *ngIf="inLibrary()>0"  >
+              <button class="btn btn-danger w-50 me-2" (click)="removeFromLibrary()" >Remove from Library</button>
+            </ng-container><br>
+            <a class="btn btn-success w-50 ms-2" [href]="bookData?.details?.saleInfo?.buyLink" *ngIf="bookData?.details?.saleInfo?.saleability=='FOR_SALE'" >Book available for Purchase</a>
+          </div>
+          <div class="reviews my-3">
+            <h5 class="d-flex px-4 mb-0 py-3 bg-dark-subtle review-head">Reviews({{reviews.length}})</h5>
+            <div class="bg-dark-subtle p-4 rev-body" *ngIf="reviews.length==0">
+                  <p class="mx-2 px-3">No reviews yet</p>
+            </div>
+            <div class="bg-dark-subtle p-4 rev-body" *ngIf="reviews.length!=0">
+              <ng-container *ngFor="let rev of reviews">
+                <div class="d-flex w-100">
+                  <div class="rev-img">
+                    <img class="review-img my-auto" width="50px" src="{{rev?.img}}" alt="">
+                  </div>
+                  <p class="d-flex justify-content-between single-review bg-primary text-light mx-2 p-3 fs-5">{{rev.review.review}} <span class="name fw-light fst-italic fs-6" >by {{rev.fname}} {{rev.lname}}</span></p>
+                </div>
+              </ng-container>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="container mx-auto">
+      <div class="px-5 d-flex justify-content-between mb-2 ">
+        <h4 class="">More on {{genre}}</h4>
+        <button class="btn btn-outline-dark" routerLink="book-list/{{genre}}" >See more</button>
+        </div>
+        <owl-carousel-o [options]="category" class="bg-dark-subtle">
+          <ng-container *ngFor="let slide of genBooks.slice(0, 15)">
+            <ng-template carouselSlide [id]="slide.rank" style="width: 300px; height: 100%;" *ngIf="slide?.title!=bookData?.title">
+              <img src="https://covers.openlibrary.org/b/id/{{slide.cover_id}}-M.jpg" routerLink="/category/book-details/{{genre}}/{{slide.title}}" class="rounded-3 mt-2">
+              <p class="text-center fw-bold mt-2 px-5" >{{slide.title | slice:0:20}}</p>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+
     </div>
   </div>
 </div>

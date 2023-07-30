@@ -6,9 +6,9 @@
   </ng-container>
 
 <ng-container *ngIf="!loader">
-  <div class="container mx-auto my-5">
+  <div class="container mx-auto main-box">
     <ng-container *ngFor="let list of featuredCategory">
-      <div class="px-5 d-flex justify-content-between my-4 ">
+      <div class="px-5 d-flex justify-content-between mb-2 ">
         <h4 class="">Featured on {{list.genre | titlecase}}</h4>
         <button class="btn btn-outline-dark" routerLink="book-list/{{list.genre}}" >See more</button>
       </div>

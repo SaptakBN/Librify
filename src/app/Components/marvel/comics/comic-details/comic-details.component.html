@@ -5,60 +5,66 @@
     </div>
   </ng-container>
 
-<div *ngIf="!loader" class="mx-auto w-100">
-<div class="container my-5 w-75 mx-auto d-flex justify-content-between px-5">
-  <div class="details w-75">
-    <h1 class="mb-4">{{comicData?.title}}</h1>
-    <h6 class="my-4">Characters: <span class="p-2 bg-dark text-light rounded-pill mx-1" *ngFor="let char of comicData?.characters?.items"> {{ char.name }} </span></h6>
-    <p class="w-50" *ngIf="comicData?.description!=''">Description: {{comicData?.description}}</p>
-    <div class="d-flex justify-content-between my-3 w-75">
-      <div class="details-card p-3 border border-dark rounded-2">
-        <p class="my-auto text-center">Date modified: {{comicData?.modified | date}}</p>
-      </div>
-      <div class="details-card p-3 border border-dark rounded-2">
-        <p class="my-auto text-center">Format: {{comicData?.format}}</p>
-      </div>
-      <div class="details-card p-3 border border-dark rounded-2">
-        <p class="my-auto text-center">Page count: {{comicData?.pageCount}}</p>
-      </div>
-    </div>
-    <div class="d-flex justify-content-between">
-      <div>
-        <button *ngIf="inLibrary()==false" class="btn btn-primary" (click)="addToLibrary()">Add to Library</button>
-        <button *ngIf="inLibrary()==true" class="btn btn-danger" (click)="removeFromLibrary()">Remove from Library</button>
-      </div>
-    </div>
-  </div>
-  <div class="img">
-    <img class="ms-auto rounded-2" width="250px" src="{{comicData?.thumbnail?.path}}.{{comicData?.thumbnail?.extension}}" alt="">
-  </div>
-</div>
-<div class="container mx-auto w-75 px-5 my-3">
-  <h4>More images</h4>
-  <div class="d-flex justify-content-start">
-    <ng-container *ngFor="let img of comicData?.images">
-      <img class="more-img rounded-2 me-2" src="{{img?.path}}.{{img?.extension}}" (click)="modalImg(img?.path, img?.extension)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    </ng-container>
-  </div>
-  <div class="reviews my-3">
-    <h5 class="d-flex px-4 mb-0 py-3 bg-dark-subtle review-head">Reviews({{reviews.length}})</h5>
-    <div class="bg-dark-subtle p-4 rev-body">
-      <ng-container *ngFor="let rev of reviews">
-        <div class="d-flex w-100">
-          <div class="rev-img">
-            <img class="review-img my-auto" width="50px" src="{{rev?.img}}" alt="">
+  <div *ngIf="!loader" class="mx-auto w-100">
+    <div class="container my-5 w-75 mx-auto d-flex justify-content-between px-5">
+      <div class="details w-75">
+        <h1 class="mb-4">{{comicData?.title}}</h1>
+        <h6 class="my-4">Characters: <span class="p-2 bg-dark text-light rounded-pill mx-1"
+            *ngFor="let char of comicData?.characters?.items"> {{ char.name }} </span></h6>
+        <p class="w-50" *ngIf="comicData?.description!=''">Description: {{comicData?.description}}</p>
+        <div class="d-flex justify-content-between my-3 w-75">
+          <div class="details-card p-3 border border-dark rounded-2">
+            <p class="my-auto text-center">Date modified: {{comicData?.modified | date}}</p>
           </div>
-          <p class="d-flex justify-content-between single-review bg-primary text-light mx-3 p-3 fs-5">{{rev?.review}} <span class="name fw-light fst-italic fs-6" >{{rev?.fname}} {{rev?.lname}}</span></p>
+          <div class="details-card p-3 border border-dark rounded-2">
+            <p class="my-auto text-center">Format: {{comicData?.format}}</p>
+          </div>
+          <div class="details-card p-3 border border-dark rounded-2">
+            <p class="my-auto text-center">Page count: {{comicData?.pageCount}}</p>
+          </div>
         </div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <button *ngIf="inLibrary()==false" class="btn btn-primary" (click)="addToLibrary()">Add to Library</button>
+            <button *ngIf="inLibrary()==true" class="btn btn-danger" (click)="removeFromLibrary()">Remove from
+              Library</button>
+          </div>
+        </div>
+      </div>
+      <div class="img">
+        <img class="ms-auto rounded-2" width="250px"
+          src="{{comicData?.thumbnail?.path}}.{{comicData?.thumbnail?.extension}}" alt="">
+      </div>
+    </div>
+    <div class="container mx-auto w-75 px-5 my-3">
+      <h4>More images</h4>
+      <div class="d-flex justify-content-start">
+        <ng-container *ngFor="let img of comicData?.images">
+          <img class="more-img rounded-2 me-2" src="{{img?.path}}.{{img?.extension}}"
+            (click)="modalImg(img?.path, img?.extension)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         </ng-container>
+      </div>
+      <div class="reviews my-3">
+        <h5 class="d-flex px-4 mb-0 py-3 bg-dark-subtle review-head">Reviews({{reviews.length}})</h5>
+        <div class="bg-dark-subtle p-4 rev-body">
+          <ng-container *ngFor="let rev of reviews">
+            <div class="d-flex w-100">
+              <div class="rev-img">
+                <img class="review-img my-auto" width="50px" src="{{rev?.img}}" alt="">
+              </div>
+              <p class="d-flex justify-content-between single-review bg-primary text-light mx-3 p-3 fs-5">
+                {{rev?.review}} <span class="name fw-light fst-italic fs-6">{{rev?.fname}} {{rev?.lname}}</span></p>
+            </div>
+          </ng-container>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">

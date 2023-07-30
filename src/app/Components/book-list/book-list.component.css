@@ -1,3 +1,38 @@
 .container-fluid{
   min-height:80vh ;
 }
+.card{
+  min-height: 16em;
+  border-radius: 2%;
+}
+.my-5{
+  margin-top: 4em;
+}
+.search-box{
+  position: absolute;
+  z-index: 100;
+  transform: translateY(-220px);
+
+}
+.search-box input{
+  height: 60px;
+  outline: none;
+  padding: 0px 25px;
+  font-size: large;
+  color: grey;
+}
+.search-btn{
+  margin-left: auto;
+  position: absolute;
+  height: fit-content;
+  transform: translate(-55px, 11px);
+}
+.suggest{
+  z-index: 10;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.suggest p:hover{
+  background-color: bisque;
+  cursor: pointer;
+}

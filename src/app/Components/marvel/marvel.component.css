@@ -8,3 +8,23 @@
 .container-fluid{
   min-height:80vh ;
 }
+/* .main-box{
+  background-image: url('src/assets/img/bg/marvel-bg.jpg') ;
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+} */
+.banner-box{
+  background-image: url('src/assets/img/bg/marvel-bg.jpg') ;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 110vh;
+}
+*{
+  font-family: 'Josefin Sans', sans-serif;
+}
+.main-box{
+  box-shadow: 0px -50px 100px black;
+}

@@ -26,14 +26,14 @@ export class NavBarComponent implements OnInit {
       '.nav-link, .navbar-brand'
     ) as NodeListOf<Element>;
     if (window.scrollY > element.clientHeight) {
-      navLink.forEach((v) => v.classList.add('text-light'));
+      navLink.forEach((v) => v.classList.add('text-light','nav-link-light'));
       element.classList.add('navbar-inverse');
       setTimeout(() => {
         this.logo = 'assets/img/logo-light.png';
       }, 100);
     } else {
       element.classList.remove('navbar-inverse');
-      navLink.forEach((v) => v.classList.remove('text-light'));
+      navLink.forEach((v) => v.classList.remove('text-light','nav-link-light'));
       setTimeout(() => {
         this.logo = 'assets/img/logo-dark.png';
       }, 100);
