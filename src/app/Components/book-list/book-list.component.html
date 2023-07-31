@@ -1,12 +1,12 @@
-<div class="container-fluid d-flex">
+<div class="container-fluid load gx-0 d-flex">
 <ng-container *ngIf="loader==true">
   <div class="spinner-border mx-auto my-auto text-secondary" style="width: 8rem; height: 8rem;" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
 </ng-container>
 <ng-container *ngIf="!loader">
-  <div class="my-5 mx-auto">
-    <div class="container mx-auto my-5">
+  <div class="mt-5 mx-auto container-fluid gx-0">
+    <div class="container-fluid gx-0 ">
 
       <!-- <div class="search-box justify-content-center w-100">
         <div class=" w-50 mx-auto">
@@ -26,40 +26,48 @@
         </div>
       </div> -->
 
-
-      <div class="row mx-auto my-5">
-        <ng-container *ngFor="let item of page_books">
-          <div class="col-4 px-0 mx-auto">
-            <div class="card p-3 bg-secondary-subtle border border-2 border-light">
-              <div class="d-flex">
-                <div class="me-4">
-                  <img class="rounded" src="https://covers.openlibrary.org/b/id/{{item?.cover_id}}-M.jpg" height="200px">
-                </div>
-                <div class="d-flex flex-column w-100 h-100">
-                  <h6>Title: {{item?.title|slice:0:40}}</h6>
-                  <h6>Author: {{item?.authors}}</h6>
-                  <ng-container *ngIf="item?.details!=undefined">
-                    <p>Price: {{item?.details?.saleInfo?.listPrice?.amount}}</p>
-                    <p>Publisher: {{item?.details?.volumeInfo?.publisher}}</p>
-                  </ng-container>
+      <div class="banner-box" style="background-image: url('assets/img/bg/{{genre}}-2.jpg');">
+      </div>
+      <div class="container-fluid main-box">
+        <div class="container mx-auto p-5">
+          <h3 class="text-center mb-5">Showing results for books in {{genre.replace('_',' ') | titlecase}} caratogy</h3>
+          <div class="row mx-auto my-5">
+            <ng-container *ngFor="let item of page_books">
+              <div class="col-4 px-0 mx-auto">
+                <div class="card p-3 bg-secondary-subtle border border-2 border-light">
+                  <div class="d-flex">
+                    <div class="me-4">
+                      <img class="rounded" src="https://covers.openlibrary.org/b/id/{{item?.cover_id}}-M.jpg" height="200px">
+                    </div>
+                    <div class="d-flex flex-column w-100 h-100">
+                      <h6>Title: {{item?.title|slice:0:40}}</h6>
+                      <h6>Author: {{item?.authors}}</h6>
+                      <ng-container *ngIf="item?.details!=undefined">
+                        <p>Price: {{item?.details?.saleInfo?.listPrice?.amount}}</p>
+                        <p>Publisher: {{item?.details?.volumeInfo?.publisher}}</p>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-dark mt-2" routerLink="book-details/{{item?.title}}" >Details</button>
                 </div>
               </div>
-              <button class="btn btn-outline-dark mt-2" routerLink="book-details/{{item?.title}}" >Details</button>
-            </div>
+            </ng-container>
           </div>
-        </ng-container>
+          <div class="my-5">
+            <nav aria-label="Page navigation example my-5">
+              <ul class="pagination justify-content-center">
+                <li class="page-item"><button class="page-link" [disabled]="current_page==1" (click)="page(current_page-1)">Previous</button></li>
+                <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==1}" [disabled]="current_page==1" (click)="page(1)">1</button></li>
+                <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==2}" [disabled]="current_page==2" (click)="page(2)">2</button></li>
+                <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==3}" [disabled]="current_page==3" (click)="page(3)">3</button></li>
+                <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==4}" [disabled]="current_page==4" (click)="page(4)">4</button></li>
+                <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==5}" [disabled]="current_page==5" (click)="page(5)">5</button></li>
+                <li class="page-item"><button class="page-link" [disabled]="current_page==5" (click)="page(current_page+1)">Next</button></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
       </div>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item"><button class="page-link" [disabled]="current_page==1" (click)="page(current_page-1)">Previous</button></li>
-          <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==1}" [disabled]="current_page==1" (click)="page(1)">1</button></li>
-          <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==2}" [disabled]="current_page==2" (click)="page(2)">2</button></li>
-          <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==3}" [disabled]="current_page==3" (click)="page(3)">3</button></li>
-          <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==4}" [disabled]="current_page==4" (click)="page(4)">4</button></li>
-          <li class="page-item"><button class="page-link" [ngClass]="{active:current_page==5}" [disabled]="current_page==5" (click)="page(5)">5</button></li>
-          <li class="page-item"><button class="page-link" [disabled]="current_page==5" (click)="page(current_page+1)">Next</button></li>
-        </ul>
-      </nav>
     </div>
   </div>
 </ng-container>

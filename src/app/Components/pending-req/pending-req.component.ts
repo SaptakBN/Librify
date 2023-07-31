@@ -44,6 +44,7 @@ export class PendingReqComponent implements OnInit {
     this.addBook.value.author = author;
   }
   onSubmit() {
+    // console.log(this.currentreq);
     // console.log(this.addBook.value);
     if(this.currentreq?.genre==undefined){
       this.toast.toastWarn('Please select a Genre')
@@ -57,8 +58,8 @@ export class PendingReqComponent implements OnInit {
       });
   }
   onGenre(el: HTMLSelectElement) {
-    // console.log(el.value);
     this.currentreq.genre = el.value;
+    console.log(this.currentreq.genre);
   }
   addToSite(cover: number, index: number) {
     let newBookData = this.req_books.docs[index];
@@ -122,10 +123,5 @@ export class PendingReqComponent implements OnInit {
       return false
     }
   }
-  notify() {
 
-    this.reqSer.get_all_req().subscribe((res) => {
-      res
-    });
-  }
 }

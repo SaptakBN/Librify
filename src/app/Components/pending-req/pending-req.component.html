@@ -1,79 +1,86 @@
-<div class="container mx-auto" *ngIf="loggedIn()">
-  <table class="mx-auto">
-    <thead>
-      <tr class="bg-dark ">
-        <th class="fw-light text-light p-3 col-2">Book Title:</th>
-        <th class="fw-light text-light p-3 col-2">Author:</th>
-        <th class="fw-light text-light p-3 col-2">First Name:</th>
-        <th class="fw-light text-light p-3 col-2">Last Name:</th>
-        <th class="fw-light text-light p-3 col-2">Status</th>
-        <th class="fw-light text-light p-3 col-2">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let req of all_req">
-        <tr [ngClass]="{'bg-success':req.state=='granted','bg-danger':req.state=='pending'}">
-          <td class="fw-light text-light p-3 col-2">{{req.title}}</td>
-          <td class="fw-light text-light p-3 col-2">{{req.author}}</td>
-          <td class="fw-light text-light p-3 col-2">{{req.fname}}</td>
-          <td class="fw-light text-light p-3 col-2">{{req.lname}}</td>
-          <td class="fw-light text-light p-3 col-2">{{req.state}}</td>
-          <td class="fw-light text-light p-3 col-2"><button (click)="forReq(req?.title, req?.author, req?.id)"
-              *ngIf="req.state=='pending'" class="btn btn-primary">Add book</button><i class="fa-solid fa-check fs-2xl" style="color: #ffffff;" *ngIf="req.state=='granted'"></i></td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
-
-  <form (ngSubmit)="onSubmit()" [formGroup]="addBook">
-    <div class="card w-50 mx-auto p-5 m-5">
-      <h1 class="text-center fw-light">Add requsted books</h1>
-      <div class="d-flex justify-content-between my-2">
-        <label for="title" class="my-auto">Book Title:</label>
-        <input type="text" name="title" id="title" formControlName="title" [value]="currentreq?.title"
-          class="w-75 p-2 rounded-2 border-2 border-primary border">
+<div class="container-fluid main my-5 d-flex" *ngIf="loggedIn()">
+  <div class="container my-5 mx-auto">
+    <div class="row both border border-3 border-light mx-2 mt-5">
+      <div class="col-6 px-0 back">
+        <div class="card front rounded-0 border-0 h-100 text-center">
+          <h3 class="text-center">List of requests</h3>
+          <table class="mx-auto">
+            <thead>
+              <tr class="bg-dark ">
+                <th class="fw-light text-light p-3 col-2">Book Title:</th>
+                <th class="fw-light text-light p-3 col-2">Author:</th>
+                <th class="fw-light text-light p-3 col-2">Name:</th>
+                <th class="fw-light text-light p-3 col-2">Status</th>
+                <th class="fw-light text-light p-3 col-2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let req of all_req">
+                <tr [ngClass]="{'bg-success':req.state=='granted','bg-danger':req.state=='pending'}">
+                  <td class="fw-light text-light p-3 col-2">{{req.title}}</td>
+                  <td class="fw-light text-light p-3 col-2">{{req.author}}</td>
+                  <td class="fw-light text-light p-3 col-2">{{req.fname}} {{req.lname}}</td>
+                  <td class="fw-light text-light p-3 col-2">{{req.state}}</td>
+                  <td class="fw-light text-light p-3 col-2"><button (click)="forReq(req?.title, req?.author, req?.id)"
+                      *ngIf="req.state=='pending'" class="btn btn-primary">Add book</button><i class="fa-solid fa-check fs-2xl" style="color: #ffffff;" *ngIf="req.state=='granted'"></i></td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="d-flex justify-content-between my-2">
-        <label for="author" class="my-auto">Book Author:</label>
-        <input type="text" name="author" id="author" formControlName="author" [value]="currentreq?.author"
-          class="w-75 p-2 rounded-2 border-2 border-primary border">
-      </div>
-      <div class="d-flex justify-content-between my-2">
-        <label for="author" class="my-auto">Select genre:</label>
-        <select class="form-select w-75 p-2 rounded-2 border-2 border-primary border" #genre (change)="onGenre(genre)">
-          <option selected>Choose</option>
-          <option value="literature">Literature</option>
-          <option value="non_Fiction">Non Fiction</option>
-          <option value="classics">Classics</option>
-          <option value="poetry">Poetry</option>
-          <option value="sci_fi">Science Fiction</option>
-          <option value="fantasy">Fantasy</option>
-          <option value="suspense">Suspense</option>
-          <option value="thriller">Thriller</option>
-          <option value="horror">Horror</option>
-          <option value="romance">Romance</option>
-          <option value="memoire">Memoire</option>
-          <option value="biography">Biography</option>
-        </select>
-      </div>
-      <div class="my-2 ms-auto">
-        <input type="submit" value="Submit a request" class="btn btn-primary" [disabled]="addBook.invalid">
-      </div>
-    </div>
-  </form>
-
-  <div class="container">
-    <div class="row" *ngIf="req_books!=undefined">
-      <ng-container *ngFor="let book of req_books?.docs; let i = index">
-        <div class="col-4">
-          <div class="card">
-            <img width="100px" src="https://covers.openlibrary.org/b/id/{{book.cover_i}}-M.jpg" alt="">
-            <h4>{{book?.title}}</h4>
-            <h4>{{book?.author_name}}</h4>
-            <button (click)="addToSite(book.cover_i, i)">Select</button>
+      <div class="col-6 px-0">
+        <form (ngSubmit)="onSubmit()" [formGroup]="addBook">
+          <div class="card border-0 mx-auto p-5 m-5">
+            <h1 class="text-center fw-light">Add requsted books</h1>
+            <div class="d-flex justify-content-between my-2">
+              <label for="title" class="my-auto">Book Title:</label>
+              <input type="text" name="title" id="title" formControlName="title" [value]="currentreq?.title"
+                class="w-75 p-2 rounded-2 border-2 border-primary border">
+            </div>
+            <div class="d-flex justify-content-between my-2">
+              <label for="author" class="my-auto">Book Author:</label>
+              <input type="text" name="author" id="author" formControlName="author" [value]="currentreq?.author"
+                class="w-75 p-2 rounded-2 border-2 border-primary border">
+            </div>
+            <div class="d-flex justify-content-between my-2">
+              <label for="author" class="my-auto">Select genre:</label>
+              <select class="form-select w-75 p-2 rounded-2 border-2 border-primary border" #genre (change)="onGenre(genre)">
+                <option selected>Choose</option>
+                <option value="literature">Literature</option>
+                <option value="non_Fiction">Non Fiction</option>
+                <option value="classics">Classics</option>
+                <option value="poetry">Poetry</option>
+                <option value="sci_fi">Science Fiction</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="suspense">Suspense</option>
+                <option value="thriller">Thriller</option>
+                <option value="horror">Horror</option>
+                <option value="romance">Romance</option>
+                <option value="memoire">Memoire</option>
+                <option value="biography">Biography</option>
+              </select>
+            </div>
+            <div class="my-2 ms-auto">
+              <input type="submit" value="Submit a request" class="btn btn-primary" [disabled]="addBook.invalid">
+            </div>
+          </div>
+        </form>
+        <div class="container mx-2">
+          <div *ngIf="req_books!=undefined">
+            <ng-container *ngFor="let book of req_books?.docs; let i = index">
+                <div class="card flex-row justify-content-between">
+                  <img class="rounded m-1 my-auto" width="75px" src="https://covers.openlibrary.org/b/id/{{book.cover_i}}-M.jpg" alt="">
+                  <div class="d-flex flex-column">
+                    <h5 class="fw-light my-2">{{book?.title}}</h5>
+                    <h6 class="fw-light my-2">{{book?.author_name}}</h6>
+                  </div>
+                  <button class="d-block my-auto mx-2 btn btn-success" (click)="addToSite(book.cover_i, i)">Add to catalogue</button>
+                </div>
+            </ng-container>
           </div>
         </div>
-      </ng-container>
+      </div>
     </div>
   </div>
 </div>

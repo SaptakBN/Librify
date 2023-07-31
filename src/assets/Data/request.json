@@ -1,23 +1,13 @@
 {
   "requests": [
     {
-      "id": 1,
-      "fname": "Sagarika",
-      "lname": "Podder",
-      "mail": "sagar@gmail.com",
-      "title": "Foundation ",
-      "author": "Isaac Asimov",
-      "state": "granted",
-      "genre": "sci_fi"
-    },
-    {
       "id": 2,
       "fname": "John",
       "lname": "Doe",
       "mail": "john@gmail.com",
       "title": "Mythos",
       "author": "Stephen Fry",
-      "state": "granted",
+      "state": "pending",
       "genre": "non_Fiction"
     },
     {
@@ -26,7 +16,7 @@
       "mail": "souvik@gmail.com",
       "title": "Heroes",
       "author": "Stephen Fry",
-      "state": "granted",
+      "state": "pending",
       "id": 3,
       "genre": "non_Fiction"
     },
@@ -36,9 +26,18 @@
       "mail": "souvik@gmail.com",
       "title": "Salem's Lot",
       "author": "Stephen King",
-      "state": "granted",
+      "state": "pending",
       "id": 6,
       "genre": "horror"
+    },
+    {
+      "fname": "Sagarika",
+      "lname": "Podder",
+      "mail": "sagar@gmail.com",
+      "title": "Foundation",
+      "author": "Isaac Asimov",
+      "state": "pending",
+      "id": 7
     }
   ]
 }

@@ -37,7 +37,7 @@ export class GoogleAPIService {
       params:{
         title:title.replaceAll(' ', '+'),
         author:author.replaceAll(' ', '+'),
-        limit:12,
+        limit:1,
       }
     })
   }

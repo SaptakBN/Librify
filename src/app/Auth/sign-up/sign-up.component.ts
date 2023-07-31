@@ -65,7 +65,5 @@ onUploadChange(evt: any) {
 handleReaderLoaded(e:any) {
   this.base64textString = ('data:image/png;base64,' + btoa(e.target.result));
 }
-genUUID(){
-  console.log(uuid());
-}
+
 }

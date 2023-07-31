@@ -6,6 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { ReqService } from 'src/app/Services/req.service';
 import { StorageService } from 'src/app/Services/storage.service';
@@ -16,6 +17,7 @@ import { StorageService } from 'src/app/Services/storage.service';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
+  windowScrolled = false;
   notification!: number;
   logo: string = 'assets/img/logo-dark.png';
   profile_img!: string | null;
@@ -40,7 +42,7 @@ export class NavBarComponent implements OnInit {
     }
   }
 
-  constructor(private storageSer: StorageService, private reqSer: ReqService) {}
+  constructor(private storageSer: StorageService, private reqSer: ReqService, private router:Router) {}
 
   ngOnInit(): void {
     let count = 0;
@@ -49,6 +51,11 @@ export class NavBarComponent implements OnInit {
         if (v.state == 'pending') count++;
       });
       this.notification = count;
+    });
+
+    
+    window.addEventListener('scroll', () => {
+      this.windowScrolled = window.scrollY !== 0;
     });
   }
   loggedIN() {
@@ -65,8 +72,9 @@ export class NavBarComponent implements OnInit {
   }
   logout() {
     this.storageSer.logout();
+    this.router.navigate(['/sign-in'])
   }
-  notify(){
-
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
   }
 }

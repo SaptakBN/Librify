@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg" navbar (scroll)="onWindowScroll()" aria-label="Ninth navbar example">
+<nav class="navbar fixed-top navbar-expand-lg" navbar id="navbar" (scroll)="onWindowScroll()" aria-label="Ninth navbar example">
   <div class="container-xl">
     <a class="navbar-brand" navlink href="#"><img [src]="logo" width="150px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
         </ng-container>
       </ul>
       <ng-container *ngIf="loggedIN()">
-    <div class="dropdown me-3">
+    <div class="dropdown me-3 ">
 <a class="btn position-reletive profile-img" navlink type="button" data-bs-toggle="dropdown" aria-expanded="false">
   <img [src]="profile_img" width="50px" >
   <span *ngIf="admin()=='true'&&notification!=0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -39,7 +39,7 @@
     <span class="visually-hidden">pending requests</span>
   </span>
 </a>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu dropdown-menu-end">
       <ng-container *ngIf="admin()">
         <ng-container *ngIf="admin()=='true' ;else elseblock" >
           <li><a class="dropdown-item btn" routerLink="admin-panel" >Admin panel</a></li>
@@ -58,3 +58,8 @@
     </div>
   </div>
 </nav>
+
+
+<button class="btn btn-lg btn-primary to-top fa-2xl border-3 border-light" [ngClass]="{ 'show-scrollTop': windowScrolled }" (click)="scrollToTop()"  >
+  <i class="fa-solid fa-arrow-up" style="color: #ffffff;"></i>
+</button>

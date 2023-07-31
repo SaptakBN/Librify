@@ -1,18 +1,15 @@
-.container-fluid{
-  min-height:80vh ;
-}
+
 .card{
   min-height: 16em;
   border-radius: 2%;
 }
-.my-5{
-  margin-top: 4em;
+.load{
+  min-height: 80vh;
 }
 .search-box{
   position: absolute;
   z-index: 100;
   transform: translateY(-220px);
-
 }
 .search-box input{
   height: 60px;
@@ -35,4 +32,14 @@
 .suggest p:hover{
   background-color: bisque;
   cursor: pointer;
+}
+.banner-box{
+  background-size: 100vw auto;
+  background-position: top 4.5em center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 55vh;
+}
+.main-box{
+  box-shadow: 0px -50px 100px black;
 }

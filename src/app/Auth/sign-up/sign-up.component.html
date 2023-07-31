@@ -1,27 +1,47 @@
-<div class="container-fluid">
-  <form [formGroup]="signUpForm" (ngSubmit)="signUP()" class="">
-    <div class="card w-50 mx-auto p-5 bg-info-subtle my-5">
-      <h1 class="text-center fw-light mb-3">Registration</h1>
-      <div class="my-2 justify-content-between d-flex">
-        <label class="my-auto" for="fname">First Name:</label>
-        <input type="text" name="fname" id="fname" formControlName="fname">
+<div class="container-fluid main d-flex">
+  <div class="container  mx-auto my-auto">
+    <div class="row both border border-3 border-light mx-2 mt-5">
+      <div class="col-6 px-0">
+        <form [formGroup]="signUpForm" (ngSubmit)="signUP()" class="">
+          <div class=" p-5 bg-light ">
+            <h1 class="text-center fw-light mb-3">Registration</h1>
+            <div class="my-1 mx-5">
+              <label class="my-auto form-label" for="fname">First Name:</label>
+              <input type="text" name="fname" id="fname" formControlName="fname" class="rounded-3 form-control">
+            </div>
+            <div class="my-1 mx-5">
+              <label class="my-auto form-label" for="lname">Last Name:</label>
+              <input type="text" name="lname" id="lname" formControlName="lname" class="rounded-3 form-control">
+            </div>
+            <div class="my-1 mx-5">
+              <label class="my-auto form-label" for="mail">Email:</label>
+              <input type="text" name="mail" id="mail" formControlName="mail" class="rounded-3 form-control">
+            </div>
+            <div class="my-1 mx-5">
+              <label class="my-auto form-label" for="pwd">Password:</label>
+              <input type="password" name="pwd" id="pwd" formControlName="pwd" class="rounded-3 form-control">
+            </div>
+            <div class="my-1 mx-5">
+              <label class="my-auto form-label" for="pro-pic">Profile picture:</label>
+              <input class="" type="file" id="pro-pic" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
+            </div>
+            <div class="text-center">
+              <input type="submit" value="Submit" [disabled]="!signUpForm.valid"
+              class="btn btn-primary btn-lg w-25 mt-2">
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="my-2 justify-content-between d-flex">
-        <label class="my-auto" for="lname">Last Name:</label>
-        <input type="text" name="lname" id="lname" formControlName="lname">
+      <div class="col-6 px-0 back">
+        <div class="card front rounded-0 border-0 h-100 text-center">
+          <div class="my-auto  text-light ">
+            <h3>Welcome to Librify</h3>
+            <p>If you are already registered with us please log in</p>
+            <button class="btn btn-light rounded btn-lg" routerLink="/sign-in">Log In</button>
+          </div>
+        </div>
       </div>
-      <div class="my-2 justify-content-between d-flex">
-        <label class="my-auto" for="mail">Email:</label>
-        <input type="text" name="mail" id="mail" formControlName="mail">
-      </div>
-      <div class="my-2 justify-content-between d-flex">
-        <label class="my-auto" for="pwd">Password:</label>
-        <input type="password" name="pwd" id="pwd" formControlName="pwd">
-      </div>
-      <input type="file" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
-    <input type="submit" value="Submit" [disabled]="!signUpForm.valid" class="btn btn-primary btn-lg w-25 mx-auto mt-2">
+    </div>
   </div>
-</form>
 </div>
 
-<button (click)="genUUID()">gen</button>

@@ -1,46 +1,62 @@
-<div *ngIf="loggedIn()" class="container-fluid bg-dark">
-  <h1 class="container text-light py-3">My Library</h1>
-</div>
-<div class="container mx-auto my-5">
-  <div class="d-flex">
-    <div class="profile">
-      <div class="profile-img">
-        <img [src]="userData?.img" width="200px" alt="">
+<div class="container-fluid main d-flex" *ngIf="loggedIn()">
+  <div class="container  mx-auto my-auto">
+    <div class="row both border border-3 border-light mx-2 mt-5">
+      <div class="col-4 back px-0 back">
+        <div class="card p-5 front border-0 rounded-0">
+          <div class="profile mx-auto">
+            <div class="profile-img">
+              <img [src]="userData?.img" width="200px" alt="">
+            </div>
+            <h5 class="my-3 text-light fw-light">{{userData?.fname}} {{userData?.lname}}</h5>
+            <h6 class="my-3 text-light fw-light">{{userData?.mail}}</h6>
+            <h6 class="my-3 text-light fw-light">Books in library: {{userData?.library.length}}</h6>
+            <h6 class="my-3 text-light fw-light">Comics in library: {{userData?.comics.length}}</h6>
+          </div>
+        </div>
       </div>
-      <h3 class="my-2">{{userData?.fname}} {{userData?.lname}}</h3>
-      <h4 class="my-2">{{userData?.mail}}</h4>
-      <h4 class="my-2">Books in library: {{userData?.library.length}}</h4>
-      <h4 class="my-2">Comics in library: {{userData?.comics.length}}</h4>
-    </div>
-    <div class="library w-100 mx-5">
-      <div class="w-100">
-        <div class="row w-100">
-
-          <ng-container *ngFor="let book of userData?.library">
-            <div class="col-3">
-              <div class="card card my-2 p-3">
-                <img class="w-100" src="https://covers.openlibrary.org/b/id/{{book.cover_id}}-M.jpg" alt=""
-                  data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(book?.title, 'book')">
+      <div class="col-8 px-0">
+        <div class="card border-0 rounded-0 flex-row h-100">
+          <div class="library w-100 mx-5 my-auto">
+              <div class="row w-100">
+                <h5 class="my-1 ">Books in my library</h5>
+                <ng-container *ngFor="let book of userData?.library">
+                  <div class="col-3">
+                    <div class="card border-0 rounded-0 my-2">
+                      <img class="" width="100px" src="https://covers.openlibrary.org/b/id/{{book.cover_id}}-M.jpg" alt=""
+                        data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(book?.title, 'book')">
+                    </div>
+                  </div>
+                </ng-container>
               </div>
-            </div>
-          </ng-container>
-          <ng-container *ngFor="let comic of userData?.comics">
-            <div class="col-3">
-              <div class="card card my-2 p-3">
-                <img class="w-100" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" alt=""
-                  data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(comic?.title, 'comic')">
+              <div class="row w-100">
+                <h5 class="my-1 ">Comics in my library</h5>
+                <ng-container *ngFor="let comic of userData?.comics">
+                  <div class="col-3">
+                    <div class="card border-0 rounded-0 my-2">
+                      <img class="" width="100px" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" alt=""
+                        data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(comic?.title, 'comic')">
+                    </div>
+                  </div>
+                </ng-container>
               </div>
-            </div>
-          </ng-container>
+              <p class="text-secondary position-absolute right-0 fw-light">*Items in library should not exceed 5</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
 <!-- card modal -->
-
-
 <div class="modal fade" id="card" tabindex="-1" aria-labelledby="cardLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -84,7 +100,7 @@
             <button (click)="remove(reviewBookData[0].title, 'comic')" class="btn btn-danger w-100 btn-sm mx-2"
               data-bs-dismiss="modal">Remove from library</button>
             <button *ngIf="!reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal" data-bs-target="#reviewModal"
-              data-bs-dismiss="modal" 
+              data-bs-dismiss="modal"
               class="btn btn-success w-100 btn-sm mx-2">Give a Review</button>
             <button *ngIf="reviewOrNot(reviewBookData[0].title)" data-bs-toggle="modal"
               data-bs-target="#editReviewModal" data-bs-dismiss="modal"
@@ -99,7 +115,6 @@
     </div>
   </div>
 </div>
-
 
 <!--add review Modal -->
 <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">

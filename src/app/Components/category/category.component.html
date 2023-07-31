@@ -9,14 +9,14 @@
   <div class="container mx-auto main-box">
     <ng-container *ngFor="let list of featuredCategory">
       <div class="px-5 d-flex justify-content-between mb-2 ">
-        <h4 class="">Featured on {{list.genre | titlecase}}</h4>
+        <h4 class="fw-light">Featured on {{list.genre.replace('_',' ') | titlecase}}</h4>
         <button class="btn btn-outline-dark" routerLink="book-list/{{list.genre}}" >See more</button>
       </div>
       <owl-carousel-o [options]="category">
         <ng-container *ngFor="let slide of list.items">
           <ng-template carouselSlide [id]="slide.rank" style="width: 300px; height: 100%;">
             <img src="https://covers.openlibrary.org/b/id/{{slide.cover_id}}-M.jpg" routerLink="book-details/{{list.genre}}/{{slide.title}}" class="rounded-3 mt-2">
-            <p class="text-center fw-bold mt-2 px-5" >{{slide.title | slice:0:20}}</p>
+            <p class="text-center mt-2 px-5" >{{slide.title | slice:0:30}}</p>
           </ng-template>
         </ng-container>
       </owl-carousel-o>

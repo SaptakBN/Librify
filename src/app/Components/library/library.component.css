@@ -4,11 +4,28 @@
   border-radius: 50%;
   overflow: hidden;
 }
-.profile {
-  /* border-right: 2px solid gray; */
-  padding-right: 100px;
-}
+
 textarea {
   height: 200px;
   padding: 20px;
+}
+
+.main{
+  min-height: 100vh;
+}
+.back{
+  background-image: url('src/assets/img/bg/library.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.front{
+  background-color: rgba(0, 0, 0, 0.587);
+}
+.both{
+  box-shadow: 2px 2px 20px black;
+}
+.right-0{
+  right: 8px;
+  font-size: small;
 }

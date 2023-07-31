@@ -1,15 +1,25 @@
 input[type="text"],input[type="password"]{
-  width: 500px;
-  height: 50px;
-  border-radius: 25px;
   outline: none;
-  border: 2px solid rgb(36, 87, 255);
-  box-shadow: inset 0px 0px 10px rgb(101, 162, 255);
-  padding: 0 20px;
+  border-bottom: 2px solid rgb(36, 87, 255);
+  box-shadow: inset 0px 0px 10px rgb(157, 157, 157);
+  padding: 10px 20px;
 }
 label{
   font-size: larger;
 }
-.btn{
-  border-radius: 25px;
+
+.main{
+  min-height: 100vh;
+}
+.back{
+  background-image: url('src/assets/img/bg/sign-up.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.front{
+  background-color: rgba(0, 0, 0, 0.587);
+}
+.both{
+  box-shadow: 2px 2px 20px black;
 }

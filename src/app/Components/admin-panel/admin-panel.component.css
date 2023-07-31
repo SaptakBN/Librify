@@ -6,3 +6,6 @@ tr, th{
   border: 2px solid white;
     border-radius: 5px;
 }
+.main{
+  min-height: 80vh;
+}

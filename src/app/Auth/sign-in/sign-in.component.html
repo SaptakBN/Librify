@@ -1,16 +1,33 @@
-<div class="container-fluid">
-  <form [formGroup]="signINForm" (ngSubmit)="signIN()" class="">
-    <div class="card w-50 mx-auto p-5 bg-info-subtle my-5">
-      <h1 class="text-center fw-light mb-3">Log In</h1>
-      <div class="my-2 justify-content-between d-flex">
-        <label class="my-auto" for="mail">Email:</label>
-        <input type="text" name="mail" id="mail" formControlName="mail">
+<div class="container-fluid main d-flex">
+  <div class="container  mx-auto my-auto">
+    <div class="row both border border-3 border-light mx-2 mt-5">
+      <div class="col-6 px-0 back">
+        <div class="card front rounded-0 border-0 h-100 text-center">
+          <div class="my-auto  text-light ">
+            <h3>Welcome to Librify</h3>
+            <p>If you dont have an account with us, please register.</p>
+            <button class="btn btn-light rounded btn-lg" routerLink="/sign-up">Register</button>
+          </div>
+        </div>
       </div>
-      <div class="my-2 justify-content-between d-flex">
-        <label class="my-auto" for="pwd">Password:</label>
-        <input type="password" name="pwd" id="pwd" formControlName="pwd">
+      <div class="col-6 px-0">
+        <form [formGroup]="signINForm" (ngSubmit)="signIN()" class="">
+          <div class="card mx-auto p-5 bg-light border-0 my-5">
+            <h1 class="text-center fw-light mb-3">Log In</h1>
+            <div class="my-2 mx-5">
+              <label class="my-auto form-label" for="mail">Email:</label>
+              <input class="form-control" type="text" name="mail" id="mail" formControlName="mail">
+            </div>
+            <div class="my-2 mx-5">
+              <label class="my-auto form-label" for="pwd">Password:</label>
+              <input class="form-control" type="password" name="pwd" id="pwd" formControlName="pwd">
+            </div>
+          <input type="submit" value="Log In" [disabled]="!signINForm.valid" class="btn btn-primary btn-lg w-25 mx-auto mt-2">
+        </div>
+      </form>
       </div>
-    <input type="submit" value="Submit" [disabled]="!signINForm.valid" class="btn btn-primary btn-lg w-25 mx-auto mt-2">
+
+    </div>
   </div>
-</form>
 </div>
+

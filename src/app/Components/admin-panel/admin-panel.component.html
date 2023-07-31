@@ -1,26 +1,30 @@
-<p>admin-panel works!</p>
-<div class="container mx-auto">
-  <table class="w-75 mx-auto">
-    <thead >
-      <tr>
-        <th class="text-center fw-light p-3 bg-dark text-light">First Name:</th>
-        <th class="text-center fw-light p-3 bg-dark text-light">Last Name:</th>
-        <th class="text-center fw-light p-3 bg-dark text-light">Email:</th>
-        <th class="text-center fw-light p-3 bg-dark text-light">Acces:</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let user of users">
-        <tr [ngClass]="{'bg-info-subtle':!user.admin,'bg-danger-subtle':user.admin}">
-          <td class="text-center p-3 ">{{user.fname}}</td>
-          <td class="text-center p-3 ">{{user.lname}}</td>
-          <td class="text-center p-3 ">{{user.mail}}</td>
-          <td class="text-center p-3 ">
-            <span *ngIf="user.admin">Admin</span>
-            <span *ngIf="!user.admin">User</span>
-          </td>
+<div class="container-fluid main d-flex my-5">
+
+  <div class="container my-auto mx-auto">
+    <h2 class="text-center my-3">Admin panel</h2>
+    <h3 class="text-center my-3">List of all the active users are given below</h3>
+    <table class="w-75 mx-auto">
+      <thead >
+        <tr>
+          <th class="text-center fw-light p-3 bg-dark text-light">First Name:</th>
+          <th class="text-center fw-light p-3 bg-dark text-light">Last Name:</th>
+          <th class="text-center fw-light p-3 bg-dark text-light">Email:</th>
+          <th class="text-center fw-light p-3 bg-dark text-light">Acces:</th>
         </tr>
-      </ng-container>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let user of users">
+          <tr [ngClass]="{'bg-info-subtle':!user.admin,'bg-danger-subtle':user.admin}">
+            <td class="text-center p-3 ">{{user.fname}}</td>
+            <td class="text-center p-3 ">{{user.lname}}</td>
+            <td class="text-center p-3 ">{{user.mail}}</td>
+            <td class="text-center p-3 ">
+              <span *ngIf="user.admin">Admin</span>
+              <span *ngIf="!user.admin">User</span>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
 </div>
