@@ -1,3 +1,20 @@
 .main{
   min-height: 100vh;
+}th, td {
+  /* border-radius: 10px; */
+  border: 2px solid white;
+  word-wrap:break-word;
+}
+tr, th{
+  border: 2px solid white;
+    border-radius: 5px;
+}
+table {
+  table-layout: fixed;
+}
+@media screen and (max-width: 395px) {
+  td{
+    font-size: 12px;
+    word-wrap: break-word;
+  }
 }

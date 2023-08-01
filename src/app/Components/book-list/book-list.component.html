@@ -29,11 +29,11 @@
       <div class="banner-box" style="background-image: url('assets/img/bg/{{genre}}-2.jpg');">
       </div>
       <div class="container-fluid main-box">
-        <div class="container mx-auto p-5">
+        <div class="container mx-auto p-lg-5 py-5 px-sm-0">
           <h3 class="text-center mb-5">Showing results for books in {{genre.replace('_',' ') | titlecase}} caratogy</h3>
           <div class="row mx-auto my-5">
             <ng-container *ngFor="let item of page_books">
-              <div class="col-4 px-0 mx-auto">
+              <div class="col-lg-4 col-md-6 col-sm-12 px-0 mx-auto">
                 <div class="card p-3 bg-secondary-subtle border border-2 border-light">
                   <div class="d-flex">
                     <div class="me-4">

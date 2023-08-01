@@ -16,10 +16,10 @@ export class CategoryComponent implements OnInit{
   loader:boolean = false
   featuredCategory: any[] = []
   genre:string[] = ['literature',
-  'non_Fiction',
+  'non_fiction',
   'classics',
   'poetry',
-  'sci_fi',
+  'science_fiction',
   'fantasy',
   'suspense',
   'thriller',
@@ -51,36 +51,34 @@ export class CategoryComponent implements OnInit{
 
 }
 category: OwlOptions = {
-  loop: false,
-  mouseDrag: true,
-  touchDrag: true,
-  pullDrag: true,
-  dots: false,
-  navSpeed: 700,
-  autoWidth:false,
-  autoplayTimeout: 2000,
-  autoplayHoverPause: true,
-  navText: ['', ''],
-  rtl:false,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    400: {
-      items: 2,
-    },
-    740: {
-      items: 3,
-    },
-    940: {
-      items: 4,
-    },
-    1140: {
-      items: 5,
-    },
-    1340: {
-      items: 6,
-    },
+    loop: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    autoplay: false,
+    autoWidth: false,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    navText: ['', ''],
+    rtl: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      250: {
+        items: 2,
+      },
+      500: {
+        items: 3,
+      },
+      750: {
+        items: 4,
+      },
+      1000: {
+        items: 5,
+      }
   },
   nav: true,
 };

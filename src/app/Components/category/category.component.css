@@ -1,15 +1,14 @@
 .owl-carousel .owl-item {
-  display: flex;
-  /* width: auto; */
+  display: block!important;
+  width: auto!important;
   height: 300px!important;
-  width: 180.2px;
 }
 img.rounded-3.ng-star-inserted {
-  height: 250px;
-  display: flex;
-  margin: 0px auto;
-  cursor: pointer;
-  box-shadow: 5px 5px 20px grey;
+  height: 250px!important;
+  display: flex!important;
+  margin: 0px auto!important;
+  cursor: pointer!important;
+  box-shadow: 5px 5px 20px grey!important;
 }
 .container-fluid{
   min-height:80vh ;
@@ -18,5 +17,9 @@ img.rounded-3.ng-star-inserted {
   margin-top: -30px!important;
 }
 .main-box{
-  margin: 7em auto 0.5em auto;
+  margin: 7em auto 0.5em auto!important;
 }
+img.rounded-3.mt-2.ng-star-inserted {
+  width: auto!important;
+}
+

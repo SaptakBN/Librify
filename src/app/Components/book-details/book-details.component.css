@@ -8,7 +8,7 @@
 }
 .tag{
   background-color: grey;
-  padding: 5px;
+  /* padding: 5px; */
   color: white;
 }
 
@@ -17,8 +17,6 @@
   width: 100px;
 }
 .details-card p{
-  width: 160px;
-  padding: 20px;
   text-align: center;
   border: 2px solid rgb(0, 119, 255);
   border-radius: 8px;
@@ -26,19 +24,21 @@
   justify-content: center;
   align-items: center;
   background-color: skyblue;
+  font-size: small;
 }
 .single-review{
   border-radius: 50px;
   border-top-left-radius: 0px;
 }
+
 .review-head{
   width: fit-content;
-  border-radius: 8px;
+  border-radius: 2px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
 .rev-body{
-  border-radius: 8px;
+  border-radius: 2px;
   border-top-left-radius: 0px;
 }
 .rev-img{
@@ -65,4 +65,39 @@ img.rounded-3 {
   margin: 0px auto;
   cursor: pointer;
   /* box-shadow: 5px 5px 20px grey; */
+}.owl-carousel .owl-item {
+  display: block!important;
+  width: auto!important;
+  height: 300px!important;
+}
+img.rounded-3.ng-star-inserted {
+  height: 250px!important;
+  display: flex!important;
+  margin: 0px auto!important;
+  cursor: pointer!important;
+  /* box-shadow: 5px 5px 20px grey!important; */
+}
+.container-fluid{
+  min-height:80vh ;
+}
+.owl-nav.ng-star-inserted {
+  margin-top: -30px!important;
+}
+.main-box{
+  margin: 7em auto 0.5em auto!important;
+}
+img.rounded-3.mt-2.ng-star-inserted {
+  width: auto!important;
+}
+.back{
+  background-image: url('src/assets/img/bg/book-details.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main,.review-block,.similar-block{
+  box-shadow: 0px 0px 20px black;
+}
+.name{
+  font-size: smaller;
 }

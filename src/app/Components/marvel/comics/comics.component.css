@@ -9,11 +9,12 @@
   min-height:80vh ;
 }
 .banner-box{
+  position: relative;
   background-size: 100vw auto;
   background-position: top 4.5em center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 110vh;
+  height: 60vw;
 }
 
 *{
@@ -24,5 +25,45 @@
 }
 .banner-box h1{
   position: fixed;
-  transform: translateY(50vh);
+  transform: translateY(20vw);
+  z-index: -2;
+}
+@media only screen and (max-width: 438px) {
+  .banner-box{
+    background-position: top 4em center;
+    height: 66vw;
+  }
+}
+@media only screen and (min-width: 438px) {
+  .banner-box{
+    background-position: top 4em center;
+    height: 64vw;
+  }
+}
+@media only screen and (min-width: 660px) {
+  .banner-box{
+    background-position: top 4em center;
+    height: 62vw;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .banner-box{
+background-position: top 4.5em center;
+    height: 56vw;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .banner-box{
+background-position: top 4.5em center;
+    height: 55vw;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .banner-box{
+    background-position: top 4.5em center;
+    height: 55vw;
+  }
+}
+.hero-name{
+  z-index: -1;
 }

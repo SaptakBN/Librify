@@ -18,9 +18,9 @@ img.rounded-3.ng-star-inserted {
   margin: 0px auto;
 }
 .search-box{
-  position: absolute;
+  /* position: absolute; */
   z-index: 100;
-  transform: translateY(-220px);
+  transform: translateY(65vh);
 
 }
 .search-box input{
@@ -48,7 +48,82 @@ img.rounded-3.ng-star-inserted {
 .container-fluid{
   background-image: url('src/assets/img/bg/home-bg.jpg');
   min-height: 100vh;
-  background-size: contain;
+  background-size: 100vw auto;
+  background-position: top  center;
   background-repeat: no-repeat;
+  background-attachment:scroll;
   background-color: rgb(59,193,200);
+}
+.logo{
+  width: 300px;
+  margin: auto auto;
+  /* position: absolute; */
+  transform: translateY(150px);
+
+}
+.main{
+  position: relative;
+}
+@media only screen and (max-width: 576px){
+  .container-fluid{
+    background-image: url('src/assets/img/bg/home-bg2.jpg');
+    min-height: 100vh;
+  }
+  .logo{
+    width: 200px;
+    margin: auto auto;
+    /* position: absolute; */
+    transform: translateY(200px);
+  }
+}
+@media only screen and (min-width: 576px){
+  .container-fluid{
+    background-image: url('src/assets/img/bg/home-bg2.jpg');
+    min-height: 100vh;
+  }
+}
+@media only screen and (min-width: 768px){
+  .container-fluid{
+    background-image: url('src/assets/img/bg/home-bg2.jpg');
+    min-height: 100vh;
+  }
+}
+@media only screen and (min-width: 992px){
+  .container-fluid{
+    background-image: url('src/assets/img/bg/home-bg2.jpg');
+    min-height: 100vh;
+  }
+  .logo{
+    width: 300px;
+    margin: auto auto;
+    /* position: absolute; */
+    transform: translateY(200px);
+  }
+}
+@media only screen and (min-width: 1200px){
+  .container-fluid{
+    background-image: url('src/assets/img/bg/home-bg.jpg');
+    min-height: 100vh;
+  }
+  .logo{
+    width: 400px;
+    margin: auto auto;
+    /* position: absolute; */
+    transform: translateY(200px);
+  }
+  .container-fluid{
+    min-height: 100vh;
+  }
+}
+@media only screen and (min-width: 1400px){
+  .container-fluid{
+    background-image: url('src/assets/img/bg/home-bg.jpg');
+    min-height: 100vh;
+  }
+  .logo{
+    width: 400px;
+    margin: auto auto;
+    /* position: absolute; */
+    transform: translateY(200px);
+  }
 }

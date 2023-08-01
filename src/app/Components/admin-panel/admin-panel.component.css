@@ -1,6 +1,7 @@
 th, td {
   /* border-radius: 10px; */
   border: 2px solid white;
+  word-wrap:break-word;
 }
 tr, th{
   border: 2px solid white;
@@ -8,4 +9,13 @@ tr, th{
 }
 .main{
   min-height: 80vh;
+}
+table {
+  table-layout: fixed;
+}
+@media screen and (max-width: 395px) {
+  td{
+    font-size: 8px;
+    word-wrap: break-word;
+  }
 }

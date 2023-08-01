@@ -45,9 +45,9 @@ export class BookDetailsComponent implements OnInit {
         this.bookData = res.find((book: any) => book.title == this.book_title);
         // console.log(this.bookData);
 
-        if (this.bookData?.details?.volumeInfo?.description?.length > 800) {
+        if (this.bookData?.details?.volumeInfo?.description?.length > 250) {
           this.description =
-            this.bookData?.details?.volumeInfo?.description.substr(0, 800);
+            this.bookData?.details?.volumeInfo?.description.substr(0, 250);
           // console.log(this.description.length);
         }
         this.token = this.storageSer.getToken();
@@ -156,7 +156,7 @@ export class BookDetailsComponent implements OnInit {
   collapse() {
     this.description = this.bookData?.details?.volumeInfo?.description.substr(
       0,
-      800
+      250
     );
   }
   category: OwlOptions = {
@@ -175,21 +175,18 @@ export class BookDetailsComponent implements OnInit {
       0: {
         items: 1,
       },
-      400: {
+      250: {
         items: 2,
       },
-      740: {
+      500: {
         items: 3,
       },
-      940: {
+      750: {
         items: 4,
       },
-      1140: {
+      1000: {
         items: 5,
-      },
-      1340: {
-        items: 6,
-      },
+      }
     },
     nav: true,
   };

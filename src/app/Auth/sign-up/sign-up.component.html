@@ -1,38 +1,38 @@
 <div class="container-fluid main d-flex">
   <div class="container  mx-auto my-auto">
     <div class="row both border border-3 border-light mx-2 mt-5">
-      <div class="col-6 px-0">
+      <div class="col-lg-6 col-md-12 col-sm-12  px-0">
         <form [formGroup]="signUpForm" (ngSubmit)="signUP()" class="">
-          <div class=" p-5 bg-light ">
+          <div class=" p-lg-5 p-md-3 p-3 bg-light ">
             <h1 class="text-center fw-light mb-3">Registration</h1>
-            <div class="my-1 mx-5">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
               <label class="my-auto form-label" for="fname">First Name:</label>
               <input type="text" name="fname" id="fname" formControlName="fname" class="rounded-3 form-control">
             </div>
-            <div class="my-1 mx-5">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
               <label class="my-auto form-label" for="lname">Last Name:</label>
               <input type="text" name="lname" id="lname" formControlName="lname" class="rounded-3 form-control">
             </div>
-            <div class="my-1 mx-5">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
               <label class="my-auto form-label" for="mail">Email:</label>
               <input type="text" name="mail" id="mail" formControlName="mail" class="rounded-3 form-control">
             </div>
-            <div class="my-1 mx-5">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
               <label class="my-auto form-label" for="pwd">Password:</label>
               <input type="password" name="pwd" id="pwd" formControlName="pwd" class="rounded-3 form-control">
             </div>
-            <div class="my-1 mx-5">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
               <label class="my-auto form-label" for="pro-pic">Profile picture:</label>
               <input class="" type="file" id="pro-pic" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
             </div>
             <div class="text-center">
               <input type="submit" value="Submit" [disabled]="!signUpForm.valid"
-              class="btn btn-primary btn-lg w-25 mt-2">
+              class="btn btn-primary btn-lg  mt-2">
             </div>
           </div>
         </form>
       </div>
-      <div class="col-6 px-0 back">
+      <div class="col-lg-6 col-md-12 col-sm-12 hide px-0 back">
         <div class="card front rounded-0 border-0 h-100 text-center">
           <div class="my-auto  text-light ">
             <h3>Welcome to Librify</h3>

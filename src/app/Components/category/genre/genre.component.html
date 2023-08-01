@@ -2,9 +2,9 @@
   <h1 class="my-5 text-center">Browse through Specific Genre</h1>
   <div class="row">
     <ng-container *ngFor="let item of genre">
-      <div class="col-4 text-center my-4">
-        <a routerLink="book-list/{{item}}">
-        <div class="card mx-auto bg-dark text-light w-50 p-5">
+      <div class="col-lg-4 col-sm-12 text-center my-4">
+        <a routerLink="book-list/{{item.toLowerCase().replace(' ','_')}}">
+        <div class="card mx-auto bg-dark text-light p-5">
             {{item}}
           </div>
         </a>

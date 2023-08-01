@@ -11,7 +11,7 @@
   <div class="row container-sm mx-auto p-0">
     <h3 class="text-center my-5">Browse comics through heroes</h3>
     <ng-container *ngFor="let hero of super_hero_data">
-      <div class="col-3 my-3" routerLink="comics/{{hero.id}}" [queryParams]="{hero_name:hero.name}">
+      <div class="col-lg-3 col-md-6 col-sm-12 my-3" routerLink="comics/{{hero.id}}" [queryParams]="{hero_name:hero.name}">
         <div class="card border-0">
           <img class="rounded-2" src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" alt="">
           <h4 class="text-center m-2">{{hero.name}}</h4>

@@ -1,7 +1,7 @@
 <div class="container-fluid main d-flex" *ngIf="loggedIn()">
-  <div class="container  mx-auto my-auto">
+  <div class="container my-5 mx-auto m-lg-auto my-md-5 mx-md-auto">
     <div class="row both border border-3 border-light mx-2 mt-5">
-      <div class="col-4 back px-0 back">
+      <div class="col-12 col-md-12 col-lg-4 back px-0 back">
         <div class="card p-5 front border-0 rounded-0">
           <div class="profile mx-auto">
             <div class="profile-img">
@@ -14,13 +14,13 @@
           </div>
         </div>
       </div>
-      <div class="col-8 px-0">
+      <div class="col-12 col-md-12 col-lg-8 px-0">
         <div class="card border-0 rounded-0 flex-row h-100">
-          <div class="library w-100 mx-5 my-auto">
+          <div class="library w-100 mx-3 mx-lg-5 mx-md-4 my-auto">
               <div class="row w-100">
-                <h5 class="my-1 ">Books in my library</h5>
+                <h5 class="my-3 my-lg-1 my-md-3 ">Books in my library</h5>
                 <ng-container *ngFor="let book of userData?.library">
-                  <div class="col-3">
+                  <div class="col-6 col-lg-3 col-md-3">
                     <div class="card border-0 rounded-0 my-2">
                       <img class="" width="100px" src="https://covers.openlibrary.org/b/id/{{book.cover_id}}-M.jpg" alt=""
                         data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(book?.title, 'book')">
@@ -29,9 +29,9 @@
                 </ng-container>
               </div>
               <div class="row w-100">
-                <h5 class="my-1 ">Comics in my library</h5>
+                <h5 class="my-3 my-lg-1 my-md-3 ">Comics in my library</h5>
                 <ng-container *ngFor="let comic of userData?.comics">
-                  <div class="col-3">
+                  <div class="col-6 col-lg-3 col-md-3">
                     <div class="card border-0 rounded-0 my-2">
                       <img class="" width="100px" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" alt=""
                         data-bs-toggle="modal" data-bs-target="#card" (click)="reviewFor2(comic?.title, 'comic')">
