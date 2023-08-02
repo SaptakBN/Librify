@@ -18,3 +18,19 @@ table {
     word-wrap: break-word;
   }
 }
+input{
+  outline: none;
+}
+input[type="text"],textarea{
+  outline: none;
+  border-bottom: 2px solid rgb(36, 87, 255);
+  box-shadow: inset 0px 0px 10px rgb(157, 157, 157);
+  padding: 10px 20px;
+}
+label{
+  font-size: larger;
+}
+
+.both{
+  box-shadow: 2px 2px 20px black;
+}

@@ -74,38 +74,6 @@
           "cover_id": 11447888
         },
         {
-          "title": "Nineteen Eighty-Four",
-          "authors": [
-            "George Orwell"
-          ],
-          "publisher": "epubli",
-          "publishedDate": "2021-01-09",
-          "description": "\"Nineteen Eighty-Four: A Novel\", often published as \"1984\", is a dystopian social science fiction novel by English novelist George Orwell. It was published on 8 June 1949 by Secker & Warburg as Orwell's ninth and final book completed in his lifetime. Thematically, \"Nineteen Eighty-Four\" centres on the consequences of totalitarianism, mass surveillance, and repressive regimentation of persons and behaviours within society. Orwell, himself a democratic socialist, modelled the authoritarian government in the novel after Stalinist Russia. More broadly, the novel examines the role of truth and facts within politics and the ways in which they are manipulated. The story takes place in an imagined future, the year 1984, when much of the world has fallen victim to perpetual war, omnipresent government surveillance, historical negationism, and propaganda. Great Britain, known as Airstrip One, has become a province of a totalitarian superstate named Oceania that is ruled by the Party who employ the Thought Police to persecute individuality and independent thinking. Big Brother, the leader of the Party, enjoys an intense cult of personality despite the fact that he may not even exist. The protagonist, Winston Smith, is a diligent and skillful rank-and-file worker and Outer Party member who secretly hates the Party and dreams of rebellion. He enters into a forbidden relationship with a colleague, Julia, and starts to remember what life was like before the Party came to power.",
-          "industryIdentifiers": [
-            {
-              "type": "ISBN_13",
-              "identifier": "9783753145136"
-            },
-            {
-              "type": "ISBN_10",
-              "identifier": "3753145130"
-            }
-          ],
-          "pageCount": 327,
-          "printType": "BOOK",
-          "categories": [
-            "Fiction"
-          ],
-          "averageRating": 4,
-          "ratingsCount": 573,
-          "maturityRating": "NOT_MATURE",
-          "language": "en",
-          "previewLink": "http://books.google.co.in/books?id=PEpoEAAAQBAJ&printsec=frontcover&dq=Nineteen%2BEighty-Four&hl=&cd=3&source=gbs_api",
-          "infoLink": "https://play.google.com/store/books/details?id=PEpoEAAAQBAJ&source=gbs_api",
-          "genre": "literature",
-          "cover_id": 9267242
-        },
-        {
           "title": "Evicted",
           "subtitle": "Poverty and Profit in the American City",
           "authors": [
@@ -873,6 +841,37 @@
           "infoLink": "https://play.google.com/store/books/details?id=Sm5AKLXKxHgC&source=gbs_api",
           "genre": "literature",
           "cover_id": 10580435
+        },
+        {
+          "title": "The Martian",
+          "subtitle": "Young Readers Edition",
+          "authors": [
+            "Andy Weir"
+          ],
+          "publisher": "Random House",
+          "publishedDate": "2020-01-30",
+          "description": "In the Young Readers Edition of The Martian: Classroom-appropriate language Discussion questions and activities Q&A with Andy Weir Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, he's sure he'll be the first person to die there. After a dust storm nearly kills him and forces his crew to evacuate while thinking him dead, Mark finds himself stranded and completely alone with no way to even signal Earth that he’s alive – and even if he could get word out, his supplies would be gone long before a rescue could arrive. Chances are, though, he won't have time to starve to death. Damaged machinery, the unforgiving environment, or plain old \"human error\" are much more likely to kill him first. But Mark isn't ready to give up yet. Drawing on his ingenuity, his engineering skills and a relentless, dogged refusal to quit, he steadfastly confronts one seemingly insurmountable obstacle after the next. Will his resourcefulness be enough to overcome the impossible odds against him?",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_13",
+              "identifier": "9781473582330"
+            },
+            {
+              "type": "ISBN_10",
+              "identifier": "1473582334"
+            }
+          ],
+          "pageCount": 400,
+          "printType": "BOOK",
+          "categories": [
+            "Young Adult Fiction"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "language": "en",
+          "previewLink": "http://books.google.co.in/books?id=1MXLDwAAQBAJ&printsec=frontcover&dq=intitle:The%2BMartian%2Binauthor:Andy%2BWeir&hl=&cd=5&source=gbs_api",
+          "infoLink": "https://play.google.com/store/books/details?id=1MXLDwAAQBAJ&source=gbs_api",
+          "genre": "science_fiction",
+          "cover_id": 11447888
         }
       ],
       "comics": [
@@ -1048,6 +1047,11 @@
           "title": "Ultimate Marvel Team-Up (2001) #1",
           "review": "this.is a good book\nedited",
           "type": "comic"
+        },
+        {
+          "title": "The Martian",
+          "review": "John reviewing martian",
+          "type": "book"
         }
       ],
       "id": "f9d8b2c2-62a4-4870-a9b6-b5890ed62e73"

@@ -52,19 +52,19 @@ export class PendingReqComponent implements OnInit {
     this.googleSer
       .openLibSearch(this.addBook.value.title, this.addBook.value.author)
       .subscribe((res) => {
-        // console.log(res);
+        console.log(res);
         this.req_books = res;
-        // console.log(this.req_books);
+        console.log(this.req_books);
       });
   }
   onGenre(el: HTMLSelectElement) {
     this.currentreq.genre = el.value;
-    console.log(this.currentreq.genre);
+    // console.log(this.currentreq.genre);
   }
   addToSite(cover: number, index: number) {
     let newBookData = this.req_books.docs[index];
     newBookData.cover_id = cover;
-    // console.log(this.req_books.docs[index]);
+    console.log(this.req_books.docs[index]);
     this.googleSer
       .getBookBydetails(this.currentreq.title, this.currentreq.author)
       .subscribe((res) => {

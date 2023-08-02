@@ -17,29 +17,30 @@ export class HomeComponent implements OnInit {
   filterBySearch!: any;
   authors = [
     {
-      key: 'OL39307A',
-      type: 'author',
-      name: 'Dan Brown',
-      birth_date: '22 June 1964',
-      top_work: 'The Da Vinci Code',
-      work_count: 81,
-    },
-    {
       key: 'OL2162284A',
-      type: 'author',
       name: 'Stephen King',
       birth_date: 'September 21, 1947',
       top_work: 'Carrie',
-      work_count: 652,
+      work_count: 65,
+      img:'assets/img/authors/king.jpg'
+    },
+    {
+      key: 'OL234664A',
+      name: 'George R. R. Martin',
+      birth_date: 'September 20, 1948',
+      top_work: 'A Game of Thrones',
+      work_count: 67,
+      img:'assets/img/authors/grrm.jpg'
     },
     {
       key: 'OL23919A',
-      type: 'author',
       name: 'J. K. Rowling',
       birth_date: '31 July 1965',
       top_work: "Harry Potter and the Philosopher's Stone",
-      work_count: 465,
+      work_count: 24,
+      img:'assets/img/authors/jkr.jpg'
     },
+
   ];
   constructor(
     private nyTimeSer: NyTimesService,
@@ -65,7 +66,7 @@ export class HomeComponent implements OnInit {
       v.title.toLowerCase().includes(this.search.toLowerCase())
     );
     this.filterBySearch = this.filterBySearch.slice(0, 5);
-    // console.log(this.filterBySearch);
+    console.log(this.filterBySearch);
   }
 
   customOptions: OwlOptions = {

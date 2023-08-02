@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { ReqService } from 'src/app/Services/req.service';
 import { StorageService } from 'src/app/Services/storage.service';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -42,7 +43,7 @@ export class NavBarComponent implements OnInit {
     }
   }
 
-  constructor(private storageSer: StorageService, private reqSer: ReqService, private router:Router) {}
+  constructor(private storageSer: StorageService, private reqSer: ReqService, private router:Router, private toaster:ToastService) {}
 
   ngOnInit(): void {
     let count = 0;
@@ -53,7 +54,7 @@ export class NavBarComponent implements OnInit {
       this.notification = count;
     });
 
-    
+
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.scrollY !== 0;
     });
@@ -73,6 +74,7 @@ export class NavBarComponent implements OnInit {
   logout() {
     this.storageSer.logout();
     this.router.navigate(['/sign-in'])
+    this.toaster.toastErr('User logged out')
   }
   scrollToTop(): void {
     window.scrollTo(0, 0);

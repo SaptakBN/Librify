@@ -16,10 +16,10 @@ export class CategoryComponent implements OnInit{
   loader:boolean = false
   featuredCategory: any[] = []
   genre:string[] = ['literature',
-  'non_fiction',
+  'non_Fiction',
   'classics',
   'poetry',
-  'science_fiction',
+  'sci_fi',
   'fantasy',
   'suspense',
   'thriller',

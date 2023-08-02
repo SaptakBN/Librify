@@ -1,0 +1,31 @@
+input{
+  outline: none;
+}
+input[type="text"],textarea{
+  outline: none;
+  border-bottom: 2px solid rgb(36, 87, 255);
+  box-shadow: inset 0px 0px 10px rgb(157, 157, 157);
+  padding: 10px 20px;
+}
+label{
+  font-size: larger;
+}
+
+.main{
+  min-height: 100vh;
+}
+.back{
+  background-image: url('src/assets/img/bg/contact.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.front{
+  background-color: rgba(0, 0, 0, 0.587);
+}
+.both{
+  box-shadow: 2px 2px 20px black;
+}
+textarea{
+  height: 150px;
+}

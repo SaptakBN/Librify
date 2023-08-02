@@ -1,9 +1,9 @@
-<!-- <div class="container-fluid d-flex">
+<div class="container-fluid d-flex">
   <ng-container *ngIf="loader==true">
     <div class="spinner-border mx-auto my-auto text-secondary" style="width: 8rem; height: 8rem;" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
-  </ng-container> -->
+  </ng-container>
 
 
 <div class="container-fluid gx-0 d-flex my-5">
@@ -25,10 +25,10 @@
           </div>
           <p class="fw-bold">{{bookData?.details?.volumeInfo?.subtitle}}</p>
           <div class="description d-flex flex-column">
-            <p [innerHTML]="description.concat('...')"></p>
+            <p [innerHTML]="description?.concat('...')"></p>
             <a class="ms-auto para-btn" *ngIf="description?.length==250" (click)="expand()">See more</a>
             <a class="ms-auto para-btn" *ngIf="description?.length>250" (click)="collapse()">Collapse</a>
-            <p class="my-3">Subject: <span class="tag rounded-pill me-1 px-2" *ngFor="let subject of bookData?.subject.slice(0,3)">
+            <p class="my-3">Subject: <span class="tag rounded-pill me-1 px-2" *ngFor="let subject of bookData?.subject?.slice(0,3)">
                 {{subject}} </span></p>
             <div class="row details-card px-1">
               <p class="p-1 mx-1 col-12 col-lg-2 col-md-6">Published on {{bookData?.details?.volumeInfo?.publishedDate | date}}</p>
@@ -77,10 +77,10 @@
     <div class="similar-block mx-auto bg-light px-lg-5 px-1 py-5">
       <div class="d-flex justify-content-between mb-2 ">
         <h4 class="ps-2">More on {{genre.replace('_', ' ') | titlecase}}</h4>
-        <button class="btn btn-outline-dark pe-3" routerLink="book-list/{{genre}}" >See more</button>
+        <button class="btn btn-outline-dark pe-3" routerLink="/category/book-list/{{genre}}" >See more</button>
         </div>
         <owl-carousel-o [options]="category" class="">
-          <ng-container *ngFor="let slide of genBooks.slice(0, 15)">
+          <ng-container *ngFor="let slide of genBooks?.slice(0, 15)">
             <ng-template carouselSlide [id]="slide.rank" style="width: 300px; height: 100%;" *ngIf="slide?.title!=bookData?.title">
               <img src="https://covers.openlibrary.org/b/id/{{slide.cover_id}}-M.jpg" routerLink="/category/book-details/{{genre}}/{{slide.title}}" class="rounded-3 mt-2">
               <p class="text-center fw-bold mt-2 px-5" >{{slide.title | slice:0:20}}</p>

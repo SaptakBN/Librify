@@ -1,8 +1,8 @@
 <div class="container-fluid main my-5 d-flex" *ngIf="loggedIn()">
   <div class="container gx-0 my-5 mx-auto">
     <div class="row both border border-3 border-light mx-lg-2 mx-auto mt-5">
-      <div class="col-12 col-md-12 col-lg-6 px-0 back">
-        <div class="card front rounded-0 border-0 h-100 text-center">
+      <div class="col-12 col-md-12 col-lg-6 px-0 back py-3">
+        <div class="card front rounded-0 border-0 h-100 text-center px-lg-3">
           <h3 class="text-center">List of requests</h3>
           <table class="mx-auto">
             <thead>
@@ -36,22 +36,22 @@
             <div class="my-1">
               <label for="title" class="form-label my-auto">Book Title:</label>
               <input type="text" name="title" id="title" formControlName="title" [value]="currentreq?.title"
-                class="p-2 rounded-2 border-2 form-control border-primary border">
+                class="p-2 rounded-2 form-control">
             </div>
             <div class="my-1">
               <label for="author" class="form-label my-auto">Book Author:</label>
               <input type="text" name="author" id="author" formControlName="author" [value]="currentreq?.author"
-                class="p-2 rounded-2 border-2 form-control border-primary border">
+                class="p-2 rounded-2 form-control">
             </div>
             <div class="my-1">
               <label for="author" class="my-auto">Select genre:</label>
               <select class="form-select p-2 rounded-2 border-2 border-primary border" #genre (change)="onGenre(genre)">
                 <option selected>Choose</option>
                 <option value="literature">Literature</option>
-                <option value="non_fiction">Non Fiction</option>
+                <option value="non_Fiction">Non Fiction</option>
                 <option value="classics">Classics</option>
                 <option value="poetry">Poetry</option>
-                <option value="science_fiction">Science Fiction</option>
+                <option value="sci_fi">Science Fiction</option>
                 <option value="fantasy">Fantasy</option>
                 <option value="suspense">Suspense</option>
                 <option value="thriller">Thriller</option>

@@ -28,6 +28,7 @@ import { AdminPanelComponent } from './Components/admin-panel/admin-panel.compon
 import { MakeReqComponent } from './Components/make-req/make-req.component';
 import { PendingReqComponent } from './Components/pending-req/pending-req.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ToastrModule } from 'ngx-toastr';
     AdminPanelComponent,
     MakeReqComponent,
     PendingReqComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,

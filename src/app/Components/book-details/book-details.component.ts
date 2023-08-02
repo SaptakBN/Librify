@@ -41,7 +41,7 @@ export class BookDetailsComponent implements OnInit {
       // console.log(this.genre, this.book_title);
       this.openLibrary.carousel_books(this.genre).subscribe((res) => {
         this.genBooks = res
-        console.log(this.genBooks);
+        // console.log(this.genBooks);
         this.bookData = res.find((book: any) => book.title == this.book_title);
         // console.log(this.bookData);
 

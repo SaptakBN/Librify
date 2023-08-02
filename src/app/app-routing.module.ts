@@ -16,6 +16,7 @@ import { ComicDetailsComponent } from './Components/marvel/comics/comic-details/
 import { AdminPanelComponent } from './Components/admin-panel/admin-panel.component';
 import { MakeReqComponent } from './Components/make-req/make-req.component';
 import { PendingReqComponent } from './Components/pending-req/pending-req.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path:'admin-panel',component:AdminPanelComponent},
   {path:'make-req',component:MakeReqComponent},
   {path:'pending-req',component:PendingReqComponent},
+  {path:'contact',component:ContactUsComponent},
   {path:'**',component:PnfComponent}
 ];
 

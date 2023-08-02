@@ -5,6 +5,99 @@
     </div>
   </ng-container>
 
+
+  <div class="container-fluid gx-0 d-flex my-5" *ngIf="loader==false">
+    <div class="container my-5 mx-auto px-lg-5">
+      <div class="row mt-5 main gx-0 border-2 border-light border">
+        <div class="col-12 col-lg-3 d-flex border border-light back">
+          <div class="front bg-dark bg-opacity-50 d-flex w-100 h-100 py-5 py-lg-0">
+            <img class="my-auto mx-auto rounded-0 border-2 border border-light" width="200px"
+              src="{{comicData?.thumbnail?.path}}.{{comicData?.thumbnail?.extension}}" alt="">
+          </div>
+        </div>
+        <div class="col-12 col-lg-9 py-3">
+          <div class="p-lg-5 p-2 card border-0">
+            <h5 class="">{{comicData?.title}}</h5>
+            <h6 class="fw-light">Marvel Comics</h6>
+            <!-- <p class="fw-bold">{{bookData?.details?.volumeInfo?.subtitle}}</p> -->
+            <div class="description d-flex flex-column">
+              <p [innerHTML]="comicData?.description"></p>
+              <!-- <a class="ms-auto para-btn" *ngIf="description?.length==250" (click)="expand()">See more</a>
+              <a class="ms-auto para-btn" *ngIf="description?.length>250" (click)="collapse()">Collapse</a> -->
+              <p class="my-3">Characters: <span class="tag rounded-pill me-1 py-2 px-2" *ngFor="let char of comicData?.characters?.items">
+                {{ char.name }} </span></p>
+              <div class="row details-card px-1">
+                <p class="p-1 mx-1 col-12 col-lg-2 col-md-6" *ngIf="comicData?.modified!=undefined">Date modified: {{comicData?.modified | date}}</p>
+                <p class="p-1 mx-1 col-12 col-lg-2 col-md-6" *ngIf="comicData?.format!=undefined">Format: {{comicData?.format}}</p>
+                <p class="p-1 mx-1 col-12 col-lg-2 col-md-6" *ngIf="comicData?.pageCount!=undefined">Page count: {{comicData?.pageCount}}</p>
+              </div>
+              <div class="d-flex justify-content-center">
+                <ng-container *ngIf="inLibrary()==false">
+                  <button class="btn btn-outline-dark w-50 me-2" (click)="addToLibrary()">Add to Library</button>
+                </ng-container>
+                <ng-container *ngIf="inLibrary()==true">
+                  <button class="btn btn-danger w-50 me-2" (click)="removeFromLibrary()">Remove from Library</button>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="review-block bg-light">
+          <div class="reviews p-lg-5 p-1 my-3">
+            <h5 class="d-flex px-lg-4 px-2 mb-0 py-2 py-lg-3 bg-dark-subtle review-head">Reviews({{reviews.length}})</h5>
+            <div class="bg-dark-subtle p-4 rev-body" *ngIf="reviews.length==0">
+              <p class="mx-2 px-3">No reviews yet</p>
+            </div>
+            <div class="bg-dark-subtle p-lg-4 p-2 rev-body" *ngIf="reviews.length!=0">
+              <ng-container *ngFor="let rev of reviews">
+                <div class="d-flex w-100">
+                  <div class="rev-img">
+                    <img class="review-img my-auto" width="50px" src="{{rev?.img}}" alt="">
+                  </div>
+                  <p class="d-flex justify-content-between single-review bg-primary text-light mx-2 p-3 fs-5">
+                    {{rev.review.review}} <span class="name fw-light fst-italic fs-6">{{rev.fname}}</span>
+                  </p>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
   <div *ngIf="!loader" class="mx-auto w-100">
     <div class="container my-5 w-75 mx-auto d-flex justify-content-between px-5">
       <div class="details w-75">
@@ -61,6 +154,28 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

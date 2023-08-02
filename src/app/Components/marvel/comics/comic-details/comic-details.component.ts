@@ -20,6 +20,7 @@ export class ComicDetailsComponent implements OnInit {
   userData!:any;
   reviews:any[]=[];
   loader:boolean = false
+  hero_comics!:any
   constructor(private aroute: ActivatedRoute, private marvelSer:MarvelService, private storageSer:StorageService, private authSer:AuthService, private toast: ToastService){}
   ngOnInit(): void {
     this.loader = true

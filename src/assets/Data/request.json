@@ -1,43 +1,13 @@
 {
   "requests": [
     {
-      "id": 2,
-      "fname": "John",
-      "lname": "Doe",
-      "mail": "john@gmail.com",
-      "title": "Mythos",
-      "author": "Stephen Fry",
-      "state": "pending",
-      "genre": "non_Fiction"
-    },
-    {
-      "fname": "Souvik",
-      "lname": "Dey",
-      "mail": "souvik@gmail.com",
-      "title": "Heroes",
-      "author": "Stephen Fry",
-      "state": "pending",
-      "id": 3,
-      "genre": "non_Fiction"
-    },
-    {
-      "fname": "Souvik",
-      "lname": "Dey",
-      "mail": "souvik@gmail.com",
-      "title": "Salem's Lot",
-      "author": "Stephen King",
-      "state": "pending",
-      "id": 6,
-      "genre": "horror"
-    },
-    {
       "fname": "Sagarika",
       "lname": "Podder",
       "mail": "sagar@gmail.com",
-      "title": "Foundation",
-      "author": "Isaac Asimov",
+      "title": "Mythos",
+      "author": "Stephen Fry",
       "state": "pending",
-      "id": 7
+      "id": 1
     }
   ]
 }
