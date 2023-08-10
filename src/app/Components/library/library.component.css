@@ -23,7 +23,7 @@ textarea {
   background-color: rgba(0, 0, 0, 0.587);
 }
 .both{
-  box-shadow: 2px 2px 20px black;
+  box-shadow: 2px 2px 20px rgb(114, 114, 114);
 }
 .right-0{
   right: 8px;

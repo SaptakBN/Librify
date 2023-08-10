@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import  { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +29,7 @@ import { MakeReqComponent } from './Components/make-req/make-req.component';
 import { PendingReqComponent } from './Components/pending-req/pending-req.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { MyReviewsComponent } from './Auth/my-reviews/my-reviews.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
     MakeReqComponent,
     PendingReqComponent,
     ContactUsComponent,
+    MyReviewsComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,7 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
       progressAnimation:'decreasing',
       positionClass:'toast-top-right',
       preventDuplicates:true,
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

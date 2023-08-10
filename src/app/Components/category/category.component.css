@@ -22,4 +22,6 @@ img.rounded-3.ng-star-inserted {
 img.rounded-3.mt-2.ng-star-inserted {
   width: auto!important;
 }
-
+.owl-item.ng-trigger.ng-trigger-autoHeight.active.ng-star-inserted {
+  width: 260px !important;
+}

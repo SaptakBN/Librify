@@ -17,6 +17,7 @@ import { AdminPanelComponent } from './Components/admin-panel/admin-panel.compon
 import { MakeReqComponent } from './Components/make-req/make-req.component';
 import { PendingReqComponent } from './Components/pending-req/pending-req.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { MyReviewsComponent } from './Auth/my-reviews/my-reviews.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'sign-up',component:SignUpComponent},
   {path:'sign-in',component:SignINComponent},
   {path:'profile',component:ProfileComponent, canActivate:[authGuard]},
+  {path:'reviews',component:MyReviewsComponent,canActivate:[authGuard]},
   {path:'library',component:LibraryComponent,canActivate:[authGuard]},
   {path:'marvel',component:MarvelComponent},
   {path:'marvel/comics/:charID',component:ComicsComponent},

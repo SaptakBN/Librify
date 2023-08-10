@@ -1,12 +1,12 @@
-<div class="container-fluid d-flex">
+<div class="container-fluid gx-0 d-flex">
   <ng-container *ngIf="loader==true">
-    <div class="spinner-border mx-auto my-auto text-secondary" style="width: 8rem; height: 8rem;" role="status">
-      <span class="visually-hidden">Loading...</span>
+    <div class="my-auto mx-auto">
+      <img src="assets/img/load-icon.gif" width="300px" alt="">
     </div>
   </ng-container>
 
 
-<div class="container-fluid gx-0 d-flex my-5">
+<div class="container-fluid gx-0 d-flex my-5" *ngIf="loader==false">
   <div class="container my-5 mx-auto px-lg-5">
     <div class="row mt-5 main gx-0 border-2 border-light border">
       <div class="col-12 col-lg-3 d-flex border border-light back">
@@ -46,9 +46,15 @@
               </ng-container>
               <ng-container *ngIf="inLibrary()>0">
                 <button class="btn btn-danger w-50 me-2" (click)="removeFromLibrary()">Remove from Library</button>
-              </ng-container><br>
-              <a class="btn btn-success w-50 ms-2" [href]="bookData?.details?.saleInfo?.buyLink"
-                *ngIf="bookData?.details?.saleInfo?.saleability=='FOR_SALE'">Book available for Purchase</a>
+              </ng-container>
+              <ng-container *ngIf="bookData?.details.saleInfo?.saleability=='FOR_SALE'; else elseblock">
+                <a class="btn btn-success w-50 ms-2" target="_blank" [href]="bookData?.details?.saleInfo?.buyLink"
+                >Book available for Purchase</a>
+              </ng-container>
+              <ng-template #elseblock>
+                <button class="btn btn-success w-50 ms-2" disabled="true"
+                >Not available for Purchase</button>
+              </ng-template>
             </div>
           </div>
         </div>
@@ -56,11 +62,11 @@
     </div>
     <div class="review-block bg-light">
       <div class="reviews p-lg-5 p-1 my-3">
-        <h5 class="d-flex px-lg-4 px-2 mb-0 py-2 py-lg-3 bg-secondary review-head">Reviews({{reviews.length}})</h5>
-        <div class="bg-secondary p-4 rev-body" *ngIf="reviews.length==0">
+        <h5 class="d-flex px-lg-4 px-2 mb-0 py-2 py-lg-3 bg-dark-subtle review-head">Reviews({{reviews.length}})</h5>
+        <div class="bg-dark-subtle p-4 rev-body" *ngIf="reviews.length==0">
           <p class="mx-2 px-3">No reviews yet</p>
         </div>
-        <div class="bg-secondary p-lg-4 p-2 rev-body" *ngIf="reviews.length!=0">
+        <div class="bg-dark-subtle p-lg-4 p-2 rev-body" *ngIf="reviews.length!=0">
           <ng-container *ngFor="let rev of reviews">
             <div class="d-flex w-100">
               <div class="rev-img">
@@ -89,4 +95,5 @@
         </owl-carousel-o>
     </div>
   </div>
+</div>
 </div>

@@ -1,25 +1,26 @@
 <div class="container-fluid d-flex">
   <ng-container *ngIf="loader==true">
-    <div class="spinner-border mx-auto my-auto text-secondary" style="width: 8rem; height: 8rem;" role="status">
-      <span class="visually-hidden">Loading...</span>
+    <div class="my-auto mx-auto">
+      <img src="assets/img/load-icon.gif" width="300px" alt="">
     </div>
   </ng-container>
 
 <ng-container *ngIf="!loader">
   <div class="container mx-auto main-box">
     <ng-container *ngFor="let list of featuredCategory">
-      <div class="px-lg-5 px-sm-0 px-md-3 d-flex justify-content-between mb-2 ">
+      <div class="px-lg-4 px-sm-0 px-md-3 d-flex justify-content-between mb-2 ">
         <h4 class="fw-light">Featured on {{list.genre.replace('_',' ') | titlecase}}</h4>
         <button class="btn btn-outline-dark" routerLink="book-list/{{list.genre}}" >See more</button>
       </div>
       <owl-carousel-o [options]="category">
         <ng-container *ngFor="let slide of list.items">
-          <ng-template carouselSlide [id]="slide.rank" style="width: 300px; height: 100%;">
+          <ng-template carouselSlide [id]="slide.rank" >
             <img src="https://covers.openlibrary.org/b/id/{{slide.cover_id}}-M.jpg" routerLink="book-details/{{list.genre}}/{{slide.title}}" class="rounded-3 mt-2">
             <p class="text-center mt-2 px-lg-5 px-sm-0 px-md-3" >{{slide.title | slice:0:30}}</p>
           </ng-template>
         </ng-container>
       </owl-carousel-o>
+
     </ng-container>
     <app-genre></app-genre>
   </div>

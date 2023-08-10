@@ -24,7 +24,10 @@
           <span class="text-light fs-5 fw-light">{{userData?.review.length}} reviews</span>
         </div>
       </div>
-      <button (click)="logOut()" class=" btn btn-danger">Log Out</button>
+      <div class="d-flex justify-content-between mx-3">
+        <button routerLink="/reviews" class=" col-5 btn btn-light">Your reviews</button>
+        <button (click)="logOut()" class=" col-5 btn btn-danger">Log Out</button>
+      </div>
     </div>
   </div>
 </div>

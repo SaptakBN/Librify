@@ -14,13 +14,30 @@
         <form [formGroup]="signINForm" (ngSubmit)="signIN()" class="">
           <div class="card mx-auto p-lg-5 p-md-3 p-3 bg-light border-0 my-5">
             <h1 class="text-center fw-light mb-3">Log In</h1>
-            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-1">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-1 position-relative">
               <label class="my-auto form-label" for="mail">Email:</label>
               <input class="form-control" type="text" name="mail" id="mail" formControlName="mail">
+              <ng-container *ngIf="signINForm.get('mail')?.touched">
+                <ng-container *ngIf="signINForm.get('mail')?.hasError('required')">
+                  <p class="err text-danger ms-auto position-absolute">Field required</p>
+                </ng-container>
+                <ng-container *ngIf="signINForm.get('mail')?.hasError('email')">
+                  <p class="err text-danger ms-auto position-absolute">Invalid Email</p>
+                </ng-container>
+              </ng-container>
             </div>
-            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-1">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-1 position-relative">
               <label class="my-auto form-label" for="pwd">Password:</label>
-              <input class="form-control" type="password" name="pwd" id="pwd" formControlName="pwd">
+              <div class="position-relative">
+                <input class="form-control" [type]="password" name="pwd" id="pwd" formControlName="pwd">
+                <button [ngClass]="{'show':button==show,'hide':button==hide}" class="pwd-btn fa position-absolute"
+                  type="button" (click)="show_password()" [innerHTML]="button"></button>
+              </div>
+              <ng-container *ngIf="signINForm.get('pwd')?.touched">
+                <ng-container *ngIf="signINForm.get('pwd')?.hasError('required')">
+                  <p class="err text-danger ms-auto position-absolute">Field required</p>
+                </ng-container>
+              </ng-container>
             </div>
           <input type="submit" value="Log In" [disabled]="!signINForm.valid" class="btn btn-primary btn-lg mx-auto mt-2">
         </div>

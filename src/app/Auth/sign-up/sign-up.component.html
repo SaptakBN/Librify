@@ -5,29 +5,77 @@
         <form [formGroup]="signUpForm" (ngSubmit)="signUP()" class="">
           <div class=" p-lg-5 p-md-3 p-3 bg-light ">
             <h1 class="text-center fw-light mb-3">Registration</h1>
-            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0 position-relative">
               <label class="my-auto form-label" for="fname">First Name:</label>
               <input type="text" name="fname" id="fname" formControlName="fname" class="rounded-3 form-control">
+              <ng-container *ngIf="signUpForm.get('fname')?.touched">
+                <ng-container *ngIf="signUpForm.get('fname')?.hasError('required')">
+                  <p class="err text-danger ms-auto position-absolute">Field required</p>
+                </ng-container>
+                <ng-container *ngIf="signUpForm.get('fname')?.hasError('pattern')">
+                  <p class="err text-danger ms-auto position-absolute">Invalid format</p>
+                </ng-container>
+              </ng-container>
             </div>
-            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0 position-relative">
               <label class="my-auto form-label" for="lname">Last Name:</label>
               <input type="text" name="lname" id="lname" formControlName="lname" class="rounded-3 form-control">
+              <ng-container *ngIf="signUpForm.get('lname')?.touched">
+                <ng-container *ngIf="signUpForm.get('lname')?.hasError('required')">
+                  <p class="err text-danger ms-auto position-absolute">Field required</p>
+                </ng-container>
+                <ng-container *ngIf="signUpForm.get('lname')?.hasError('pattern')">
+                  <p class="err text-danger ms-auto position-absolute">Invalid format</p>
+                </ng-container>
+              </ng-container>
             </div>
-            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0 position-relative">
               <label class="my-auto form-label" for="mail">Email:</label>
               <input type="text" name="mail" id="mail" formControlName="mail" class="rounded-3 form-control">
+              <ng-container *ngIf="signUpForm.get('mail')?.touched">
+                <ng-container *ngIf="signUpForm.get('mail')?.hasError('required')">
+                  <p class="err text-danger ms-auto position-absolute">Field required</p>
+                </ng-container>
+                <ng-container *ngIf="signUpForm.get('mail')?.hasError('email')">
+                  <p class="err text-danger ms-auto position-absolute">Invalid format</p>
+                </ng-container>
+              </ng-container>
             </div>
-            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0 position-relative">
               <label class="my-auto form-label" for="pwd">Password:</label>
-              <input type="password" name="pwd" id="pwd" formControlName="pwd" class="rounded-3 form-control">
+              <div class="position-relative">
+                <input [type]="password" name="pwd" id="pwd" formControlName="pwd" class="rounded-3 form-control">
+                <button [ngClass]="{'show':button==show,'hide':button==hide}" class="pwd-btn fa position-absolute"
+                  type="button" (click)="show_password('pwd')" [innerHTML]="button"></button>
+              </div>
+              <ng-container *ngIf="signUpForm.get('pwd')?.touched">
+                <ng-container *ngIf="signUpForm.get('pwd')?.hasError('required')">
+                  <p class="err text-danger ms-auto position-absolute">Field required</p>
+                </ng-container>
+                <ng-container *ngIf="signUpForm.get('pwd')?.hasError('pattern')">
+                  <p class="err text-danger ms-auto position-absolute">Invalid format</p>
+                </ng-container>
+              </ng-container>
+            </div>
+            <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0 position-relative">
+              <label class="my-auto form-label" for="pwd">Confirm Password:</label>
+              <div class="position-relative">
+                <input [type]="cpassword" name="cpwd" id="cpwd" (blur)="passwordConforming()" formControlName="cpwd"
+                  class="rounded-3 form-control">
+                  <button [ngClass]="{'show':cbutton==show,'hide':cbutton==hide}" class="pwd-btn fa position-absolute"
+                  type="button" (click)="show_password('cpwd')" [innerHTML]="cbutton"></button>
+              </div>
+              <ng-container *ngIf="errMsg">
+                <p class="err text-danger position-absolute">{{errMsg}}</p>
+              </ng-container>
             </div>
             <div class="my-2 mx-lg-5 mx-md-2 mx-sm-0">
               <label class="my-auto form-label" for="pro-pic">Profile picture:</label>
-              <input class="" type="file" id="pro-pic" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
+              <input class="" type="file" id="pro-pic" (change)="onUploadChange($event)"
+                accept=".png, .jpg, .jpeg, .pdf" />
             </div>
             <div class="text-center">
-              <input type="submit" value="Submit" [disabled]="!signUpForm.valid"
-              class="btn btn-primary btn-lg  mt-2">
+              <input type="submit" value="Submit" [disabled]="!signUpForm.valid" class="btn btn-primary btn-lg mt-2">
             </div>
           </div>
         </form>
@@ -44,4 +92,3 @@
     </div>
   </div>
 </div>
-

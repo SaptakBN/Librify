@@ -135,13 +135,4 @@ export class BookListComponent implements OnInit {
         break;
     }
   }
-  // addGenre(){
-  //   let modified_books:any = []
-  //   this.all_books.map((v:any)=>{
-  //     let data = v
-  //     data.genre = this.genre
-  //     modified_books.push(data)
-  //   })
-  //   console.log(modified_books);
-  // }
 }

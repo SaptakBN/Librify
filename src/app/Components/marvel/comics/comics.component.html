@@ -1,7 +1,7 @@
 <div class="container-fluid gx-0 d-flex">
   <ng-container *ngIf="loader==true">
-    <div class="spinner-border mx-auto my-auto text-secondary" style="width: 8rem; height: 8rem;" role="status">
-      <span class="visually-hidden">Loading...</span>
+    <div class="my-auto mx-auto">
+      <img src="assets/img/load-icon.gif" width="300px" alt="">
     </div>
   </ng-container>
 <div class="container-fluid gx-0" *ngIf="!loader">
@@ -16,9 +16,9 @@
           <div class="card p-3" routerLink="comic-details/{{comics.id}}">
             <img class="mx-auto my-3 rounded-2" src="{{comics.thumbnail.path}}.{{comics.thumbnail.extension}}" alt="">
             <h5>{{comics.title}}</h5>
-            <div class="w-100">
+            <!-- <div class="w-100">
               <p class="float-end fw-bold text-success fs-4">{{ comics.prices[0].price | dollarToInr | currency:'INR' }}</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </ng-container>

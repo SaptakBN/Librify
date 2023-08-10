@@ -27,6 +27,7 @@ export class CategoryComponent implements OnInit{
   'romance',
   'memoire',
   'biography']
+
   constructor(
     private googleSer: GoogleAPIService,
     private openLibrary:LibraryjsonService
@@ -58,26 +59,26 @@ category: OwlOptions = {
     dots: false,
     navSpeed: 700,
     autoplay: false,
-    autoWidth: false,
+    autoWidth: true,
     autoplayTimeout: 2000,
     autoplayHoverPause: true,
     navText: ['', ''],
     rtl: false,
     responsive: {
       0: {
-        items: 1,
+        items: 1
       },
       250: {
-        items: 2,
+        items: 2
       },
       500: {
-        items: 3,
+        items: 3
       },
       750: {
-        items: 4,
+        items: 4
       },
       1000: {
-        items: 5,
+        items: 5
       }
   },
   nav: true,

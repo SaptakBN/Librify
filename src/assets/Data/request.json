@@ -1,13 +1,14 @@
 {
   "requests": [
     {
-      "fname": "Sagarika",
-      "lname": "Podder",
-      "mail": "sagar@gmail.com",
+      "fname": "John",
+      "lname": "Doe",
+      "mail": "john@gmail.com",
       "title": "Mythos",
       "author": "Stephen Fry",
-      "state": "pending",
-      "id": 1
+      "state": "granted",
+      "id": 1,
+      "genre": "non_Fiction"
     }
   ]
 }

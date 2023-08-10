@@ -53,7 +53,8 @@
         </ng-template>
       </ng-container>
       <li><a routerLink="profile" class="dropdown-item btn " >Profile</a></li>
-      <li><a (click)="logout()" class="dropdown-item btn danger" >Log Out<i class="fa-solid fa-right-from-bracket mx-2" ></i></a></li>
+      <!-- <li><a (click)="logout()" class="dropdown-item btn danger" >Log Out<i class="fa-solid fa-right-from-bracket mx-2" ></i></a></li> -->
+      <li><a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="dropdown-item btn danger" >Log Out<i class="fa-solid fa-right-from-bracket mx-2" ></i></a></li>
     </ul>
   </div>
     </ng-container>
@@ -66,3 +67,20 @@
 <button class="btn btn-lg btn-primary to-top fa-2xl border-3 border-light" [ngClass]="{ 'show-scrollTop': windowScrolled }" (click)="scrollToTop()"  >
   <i class="fa-solid fa-arrow-up" style="color: #ffffff;"></i>
 </button>
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content rounded-3 shadow">
+      <div class="modal-body p-4 text-center">
+        <h5 class="mb-2">Are you sure?</h5>
+        <p class="mb-0 warn">You cannot access library after logout.</p>
+      </div>
+      <div class="modal-footer flex-nowrap p-0">
+        <button type="button" class="back btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No, Back</button>
+        <button type="button" data-bs-dismiss="modal" (click)="logout()" class="btn btn-lg btn-link fs-6 logout text-decoration-none col-6 py-3 m-0 rounded-0 border-end text-danger"><strong>Yes, Log Out</strong></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,9 +3,9 @@
   <div class="row">
     <ng-container *ngFor="let item of genre">
       <div class="col-lg-4 col-sm-12 text-center my-4">
-        <a routerLink="book-list/{{item.toLowerCase().replace(' ','_')}}">
+        <a routerLink="book-list/{{item}}">
         <div class="card mx-auto bg-dark text-light p-5">
-            {{item}}
+            {{item.replaceAll('_', ' ') | titlecase}}
           </div>
         </a>
       </div>

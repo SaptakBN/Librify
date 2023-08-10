@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./genre.component.css']
 })
 export class GenreComponent implements OnInit {
-  genre:string[] = ['Fiction','Non Fiction','Classic','Poetry','Science Fiction','Fantasy','Suspense','Thriller','Horror','Romance','Memoire','Autobiography']
+  genre:string[] = ['literature','non_Fiction','classic','poetry','sci_fi','fantasy','suspense','thriller','horror','romance','memoire','biography']
   constructor(){}
   ngOnInit(): void {
 

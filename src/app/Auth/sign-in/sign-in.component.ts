@@ -13,6 +13,10 @@ import { ToastService } from 'src/app/Services/toast.service';
 export class SignINComponent implements OnInit {
   userData!: any;
   signINForm!: FormGroup;
+  show: string = '&#xf06e;';
+  hide: string = '&#xf070;';
+  password: string = 'password';
+  button: string = this.show;
   constructor(
     private fb: FormBuilder,
     private authSer: AuthService,
@@ -22,7 +26,7 @@ export class SignINComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.signINForm = this.fb.group({
-      mail: ['', [Validators.required]],
+      mail: ['', [Validators.required,Validators.email]],
       pwd: ['', [Validators.required]],
     });
   }
@@ -71,5 +75,18 @@ export class SignINComponent implements OnInit {
   //     }
   //   });
   // }
+}
+show_password() {
+  if (this.button == this.show) {
+    this.button = this.hide;
+    this.password = 'text';
+    setTimeout(() => {
+      this.password = 'password';
+      this.button = this.show;
+    }, 5000);
+  } else if (this.button == this.hide) {
+    this.button = this.show;
+    this.password = 'password';
+  }
 }
 }

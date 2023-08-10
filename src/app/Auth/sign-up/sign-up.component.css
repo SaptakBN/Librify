@@ -23,10 +23,33 @@ label{
   background-color: rgba(0, 0, 0, 0.587);
 }
 .both{
-  box-shadow: 0px 0px 20px black;
+  box-shadow: 0px 0px 20px rgb(114, 114, 114);
 }
 @media screen and (max-width: 992px) {
   .hide{
     display: none;
   }
+}
+.err{
+  right: 10px;
+}
+.show{
+  color: rgb(82, 157, 255);
+}
+.hide{
+  color: rgb(255, 107, 107);
+}
+.pwd-btn{
+  position: absolute;
+  transform: translate(3px,-42px);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  background-color: transparent;
+  cursor: pointer;
+  right: 10px
 }

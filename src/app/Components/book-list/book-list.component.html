@@ -1,7 +1,7 @@
 <div class="container-fluid load gx-0 d-flex">
 <ng-container *ngIf="loader==true">
-  <div class="spinner-border mx-auto my-auto text-secondary" style="width: 8rem; height: 8rem;" role="status">
-    <span class="visually-hidden">Loading...</span>
+  <div class="my-auto mx-auto">
+    <img src="assets/img/load-icon.gif" width="300px" alt="">
   </div>
 </ng-container>
 <ng-container *ngIf="!loader">
@@ -42,10 +42,14 @@
                     <div class="d-flex flex-column w-100 h-100">
                       <h6>Title: {{item?.title|slice:0:40}}</h6>
                       <h6>Author: {{item?.authors}}</h6>
-                      <ng-container *ngIf="item?.details!=undefined">
-                        <p>Price: {{item?.details?.saleInfo?.listPrice?.amount}}</p>
-                        <p>Publisher: {{item?.details?.volumeInfo?.publisher}}</p>
+                      <p>Publisher: {{item?.details?.volumeInfo?.publisher}}</p>
+                      <ng-container *ngIf="item?.details.saleInfo?.saleability=='FOR_SALE'; else elseblock">
+                        <p class="text-success ">Book available on google books for purchase</p>
                       </ng-container>
+                      <ng-template #elseblock>
+                        <p class="text-danger ">Unavailable for purchase</p>
+                      </ng-template>
+
                     </div>
                   </div>
                   <button class="btn btn-outline-dark mt-2" routerLink="book-details/{{item?.title}}" >Details</button>
@@ -72,4 +76,4 @@
   </div>
 </ng-container>
 </div>
-<!-- <button (click)="addGenre()" ></button> -->
+<
