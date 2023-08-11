@@ -28,7 +28,6 @@ import { AdminPanelComponent } from './Components/admin-panel/admin-panel.compon
 import { MakeReqComponent } from './Components/make-req/make-req.component';
 import { PendingReqComponent } from './Components/pending-req/pending-req.component';
 import { ToastrModule } from 'ngx-toastr';
-import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { MyReviewsComponent } from './Auth/my-reviews/my-reviews.component';
 
 @NgModule({
@@ -53,7 +52,6 @@ import { MyReviewsComponent } from './Auth/my-reviews/my-reviews.component';
     AdminPanelComponent,
     MakeReqComponent,
     PendingReqComponent,
-    ContactUsComponent,
     MyReviewsComponent,
   ],
   imports: [
